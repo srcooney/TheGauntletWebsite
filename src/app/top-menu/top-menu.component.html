@@ -1,0 +1,31 @@
+<header class="l-header v-center-parent">
+<!--     <img class="v-center" routerLink="home"
+         src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
+ -->
+    <ul class="top-menu disable-link-styles">
+        <li>
+            <a routerLink="home"
+               routerLinkActive="menu-active">Home</a>
+        </li>
+        <li>
+            <a routerLink="courses"
+               routerLinkActive="menu-active">Events</a>
+        </li>
+        <li>
+            <a routerLink="my-account"
+               routerLinkActive="menu-active">My Account</a>
+        </li>
+        <li>
+            <a routerLinkActive="menu-active" routerLink="login"
+                *ngIf="!authInfo?.isLoggedIn()">Login</a>
+        </li>
+        <li>
+            <a routerLinkActive="menu-active" routerLink="register"
+               *ngIf="!authInfo?.isLoggedIn()">Register</a>
+        </li>
+        <li>
+            <a *ngIf="authInfo?.isLoggedIn()" (click)="logout()">Logout</a>
+        </li>
+    </ul>
+
+</header>

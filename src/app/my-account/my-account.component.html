@@ -1,0 +1,9 @@
+<h1>My Account</h1>
+<h3>RSVPs</h3>
+	<table class="table lessons-list card card-strong">
+		<tbody>
+			<tr *ngFor="let rsvp of userRsvps" (click)="selectEvent(gEvent)">
+				<td class="event-title"><h3> {{rsvp.title}}</h3></td>
+			</tr>
+		</tbody>	
+	</table>

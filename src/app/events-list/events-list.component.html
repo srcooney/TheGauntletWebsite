@@ -1,0 +1,17 @@
+	<h1>All Events</h1>
+	<div class="new-event-container">
+		<button routerLink="new">New Event</button>
+	</div>
+	<table class="table lessons-list card card-strong">
+		<tbody>
+			<tr *ngFor="let event of allEvents" (click)="selectEvent(gEvent)">
+				<td class="event-title"><h3> {{event.title}}</h3></td>
+				<td class="duration">
+					<span>{{event.description}}</span>
+				</td>
+				<td class="rsvp">
+					<button (click)="rsvpUser(event.$key,auth.uid)">RSVP</button>
+				</td>
+			</tr>
+		</tbody>	
+	</table>

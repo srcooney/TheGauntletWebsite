@@ -1,0 +1,23 @@
+
+<form [formGroup]="form" autocomplete="off" novalidate class="lesson-form">
+
+    <fieldset>
+        <legend>Gauntlet Event</legend>
+        <div class="form-field">
+            <label>Title:</label>
+            <input name="title" formControlName="title">
+            <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
+        </div>
+        <div class="form-field">
+            <label>Description:</label>
+            <input name="title" formControlName="description">
+            <div class="field-error-message"
+                 *ngIf="isErrorVisible('description','required')">field is mandatory</div>
+        </div>
+        <div class="form-field">
+            <label>Long Description:</label>
+            <textarea name="description" formControlName="longDescription"></textarea>
+        </div>
+    </fieldset>
+
+</form>
