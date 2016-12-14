@@ -1,0 +1,10 @@
+<h3>{{componentTitle}}</h3>
+<table class="table lessons-list card card-strong">
+	<tbody>
+		<tr class="title-row" *ngFor="let title of titleList; let i = index" (click)="route(i)">
+			<td class="event-title"><h3> {{titleList[i]}}</h3></td>
+		</tr>
+	</tbody>	
+</table>
+
+

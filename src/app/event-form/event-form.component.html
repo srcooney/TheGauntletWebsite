@@ -2,21 +2,38 @@
 <form [formGroup]="form" autocomplete="off" novalidate class="lesson-form">
 
     <fieldset>
-        <legend>Gauntlet Event</legend>
+        <div class="banner-container">
+            <div class="banner"></div>
+            <div class="banner-content">
+                <div>
+                    <span class="banner-title">Gauntlet Event</span>
+                </div> 
+            </div>
+        </div>   
         <div class="form-field">
             <label>Title:</label>
             <input name="title" formControlName="title">
             <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
         </div>
         <div class="form-field">
-            <label>Description:</label>
-            <input name="title" formControlName="description">
-            <div class="field-error-message"
-                 *ngIf="isErrorVisible('description','required')">field is mandatory</div>
+            <label>Max Number of Users:</label>
+            <input type="number" name="maxNumUsers" formControlName="maxNumUsers">
         </div>
         <div class="form-field">
-            <label>Long Description:</label>
-            <textarea name="description" formControlName="longDescription"></textarea>
+            <label>All Access Time:</label>
+            <input [value]="allAccessTime" 
+            (change)="allAccessTime=$event.target.value" name="allAccessTime" formControlName="allAccessTime" type="datetime-local">
+        </div>
+        <div class="form-field">
+            <label>Event Start Date:</label>
+            <input [value]="eventStartTime" 
+            (change)="eventStartTime=$event.target.value" name="eventStartTime" formControlName="eventStartTime" type="datetime-local">
+        </div>
+        <div class="form-field">
+            <label>Description:</label>
+            <textarea class="form-description" name="title" formControlName="description"></textarea>
+            <div class="field-error-message"
+            *ngIf="isErrorVisible('description','required')">field is mandatory</div>
         </div>
     </fieldset>
 

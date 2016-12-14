@@ -5,7 +5,11 @@ export class GauntletEvent {
         public $key:string,
         public title: string,
         public description: string,
-        public longDescription: string
+        public maxNumUsers: number,
+        public currNumUsers: number,
+        public eventStartTime: Date,
+        public allAccessTime: Date,
+        
         ) {
 
     }
@@ -14,12 +18,16 @@ export class GauntletEvent {
         return array.map(GauntletEvent.fromJson);
     }
 
-    static fromJson({$key,title,description,longDescription}):GauntletEvent {
+    static fromJson({$key,title,description,maxNumUsers,currNumUsers,eventStartTime,allAccessTime}):GauntletEvent {
         return new GauntletEvent(
             $key,
             title,
             description,
-            longDescription);
+            maxNumUsers,
+            currNumUsers,
+            new Date(eventStartTime),
+            new Date(allAccessTime)
+            );
     }
 
     }

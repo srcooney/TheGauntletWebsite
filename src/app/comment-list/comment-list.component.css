@@ -1,0 +1,16 @@
+.btn-black {
+	border-radius: 6px;
+	padding: 5px 10px 5px 10px;
+}
+input {
+	margin-top: 15px;
+	width: 400px;
+}
+
+p {
+	width: 440px;
+}
+
+.comment-table {
+	text-align: center;
+}

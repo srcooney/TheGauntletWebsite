@@ -1,0 +1,63 @@
+	<div class="banner-container">
+		<div class="banner"></div>
+		<div class="banner-content">
+			<div class="event-creator-btn" *ngIf="authInfo.isEventCreator()">
+				<button class="btn-black" (click)="removeEvent(event?.$key)">Delete Event</button>
+				<button class="btn-black" (click)="editEvent(event?.$key)">Edit Event</button>
+				<button class="btn-black" (click)="duplicateEvent(event?.$key)">Duplicate Event</button>
+				<button class="btn-black" (click)="showEmails()">{{emailButtonText}}</button>
+			</div>
+			<div>
+				<span class="banner-event-title">{{event?.title}}</span>
+			</div>
+			<div >
+				<span>Google+ | </span>
+				<span>{{dateTime}}</span>
+			</div>
+			<div >
+				<span>Spots taken: </span>
+				<span>{{event?.currNumUsers}}/{{event?.maxNumUsers}}</span>
+			</div>
+		</div>
+	</div>
+
+
+
+	<div>
+		<div class="description">
+			<span class="description-text">{{event?.description}}</span>
+		</div>
+
+		<div >
+			<span class="list-title">
+				<h3>Rsvps</h3>
+				<table  class="list-table table lessons-list card card-strong">
+					<tbody>
+						<tr class="title-row" *ngFor="let rsvp of eventRsvps" >
+							<td *ngIf="emailButtonText == 'Show Emails'" class="event-title"><h3> {{rsvp?.displayName}}</h3></td>
+							<td *ngIf="emailButtonText == 'Show User Names'" class="event-title"><h3> {{rsvp?.email}}</h3></td>
+						</tr>
+					</tbody>	
+				</table>
+			</span>
+			<span class="list-arrows">
+				<div>&larr;</div>
+				<div>&larr;</div>
+			</span>
+			<span class="list-title">
+				<h3>WaitList</h3>
+				<table  class="list-table table lessons-list card card-strong">
+					<tbody>
+						<tr #userRow class="title-row" *ngFor="let waitlist of eventWaitlists" (click)="addToRsvp(event?.$key,waitlist?.displayName,event?.currNumUsers,userRow)">
+							<td *ngIf="emailButtonText == 'Show Emails'" class="event-title"><h3> {{waitlist?.displayName}}</h3></td>
+							<td *ngIf="emailButtonText == 'Show User Names'" class="event-title"><h3> {{waitlist?.email}}</h3></td>
+						</tr>
+					</tbody>	
+				</table>
+			</span>
+		</div>
+
+		<div >
+			<comment-list *ngIf="authInfo.isLoggedIn()" [eventKey]="event?.$key" [displayName]="authInfo.displayName"></comment-list>
+		</div>
+	</div>

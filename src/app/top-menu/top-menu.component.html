@@ -1,30 +1,29 @@
-<header class="l-header v-center-parent">
+<header class="top-menu-header v-center-parent">
 <!--     <img class="v-center" routerLink="home"
          src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
  -->
     <ul class="top-menu disable-link-styles">
-        <li>
-            <a routerLink="home"
-               routerLinkActive="menu-active">Home</a>
-        </li>
-        <li>
-            <a routerLink="courses"
-               routerLinkActive="menu-active">Events</a>
-        </li>
-        <li>
+        <li *ngIf="authInfo?.isLoggedIn()">
             <a routerLink="my-account"
                routerLinkActive="menu-active">My Account</a>
         </li>
         <li>
-            <a routerLinkActive="menu-active" routerLink="login"
-                *ngIf="!authInfo?.isLoggedIn()">Login</a>
+            <a routerLink="events"
+               routerLinkActive="menu-active">Events</a>
         </li>
         <li>
-            <a routerLinkActive="menu-active" routerLink="register"
-               *ngIf="!authInfo?.isLoggedIn()">Register</a>
+            <a routerLink="calendar"
+               routerLinkActive="menu-active">Calendar</a>
         </li>
-        <li>
-            <a *ngIf="authInfo?.isLoggedIn()" (click)="logout()">Logout</a>
+        <li *ngIf="!authInfo?.isLoggedIn()">
+            <a routerLinkActive="menu-active" (click)="login()" >Login</a>
+        </li>
+        <li *ngIf="authInfo?.isLoggedIn()">
+            <a (click)="logout()">Logout</a>
+        </li>
+        <li *ngIf="authInfo?.isAdmin()">
+            <a routerLink="admin"
+               routerLinkActive="menu-active">Admin</a>
         </li>
     </ul>
 

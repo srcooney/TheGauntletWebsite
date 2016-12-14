@@ -1,0 +1,40 @@
+	<div class="banner-container">
+		<div class="banner"></div>
+		<div class="banner-content">
+			<div>
+				<span class="banner-title">Admin Page</span>
+			</div>
+		</div>
+	</div>
+<div class="navButtons">
+	<button class="btn-black" (click)="switchView('admin')" [class.active]="listView === 'admin'">Admins</button>
+		<button class="btn-black" (click)="switchView('eventCreator')" [class.active]="listView === 'eventCreator'">Event Creators</button>
+		<button class="btn-black" (click)="switchView('patreon7Member')" [class.active]="listView === 'patreon7Member'">Patreon Members</button>
+</div>
+
+<div class="listView">
+<span>
+<h3>{{trueAttributeTitle}}</h3>
+<table  class="list-table table lessons-list card card-strong">
+	<tbody>
+		<tr class="title-row" *ngFor="let user of trueAttributeUsers" (click)="updateAttributeStatus(user?.$key,listView,false)">
+			<td class="event-title"><h3> {{user?.displayName}}</h3></td>
+		</tr>
+	</tbody>	
+</table>
+</span>
+<span class="list-arrows">
+	<div>&larr;</div>
+	<div>&rarr;</div>
+</span>
+<span >
+<h3>{{falseAttributeTitle}}</h3>
+<table  class="list-table table lessons-list card card-strong">
+	<tbody>
+		<tr class="title-row" *ngFor="let user of falseAttributeUsers" (click)="updateAttributeStatus(user?.$key,listView,true)">
+			<td class="event-title"><h3> {{user?.displayName}}</h3></td>
+		</tr>
+	</tbody>	
+</table>
+</span>
+</div>

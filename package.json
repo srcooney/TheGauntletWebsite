@@ -20,9 +20,12 @@
     "@angular/platform-browser": "^2.1.0",
     "@angular/platform-browser-dynamic": "^2.1.0",
     "@angular/router": "^3.1.0",
+    "angular-calendar": "^0.4.1",
+    "angular2-fullcalendar": "^1.1.1",
     "angularfire2": "^2.0.0-beta.6",
     "core-js": "^2.4.1",
     "firebase": "^3.6.1",
+    "moment": "^2.17.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"

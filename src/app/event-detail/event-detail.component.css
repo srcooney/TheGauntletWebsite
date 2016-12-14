@@ -1,0 +1,13 @@
+.event-creator-btn {
+	float: right;
+	position: relative;
+}
+
+.description {
+	text-align: center;
+}
+.description-text {
+	width: 400px;
+	text-align: justify;
+	white-space: pre-wrap;
+}

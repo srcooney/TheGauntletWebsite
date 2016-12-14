@@ -1,0 +1,20 @@
+h3 {
+  margin: 0;
+}
+.container {
+  padding-bottom: 50px;
+}
+
+.main-container .list {
+    max-width: none;
+}
+
+a {
+	color: white;
+}
+
+.welcome-text {
+	width: 600px;
+	text-align: justify;
+	margin-bottom: 80px;
+}

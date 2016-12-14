@@ -1,9 +1,35 @@
-<h1>My Account</h1>
-<h3>RSVPs</h3>
-	<table class="table lessons-list card card-strong">
-		<tbody>
-			<tr *ngFor="let rsvp of userRsvps" (click)="selectEvent(gEvent)">
-				<td class="event-title"><h3> {{rsvp.title}}</h3></td>
-			</tr>
-		</tbody>	
-	</table>
+	<div class="banner-container">
+		<div class="banner"></div>
+		<div class="banner-content">
+			<div>
+				<span class="banner-title">My Account</span>
+			</div>
+			<div>
+				<span *ngIf="authInfo.isLoggedIn()">Welcome {{authInfo.displayName}} to your account details!</span>
+			</div>
+		</div>
+	</div>
+
+			<div >
+			<span class="list-title">
+				<h3>My Rsvps</h3>
+				<table  class="list-table table lessons-list card card-strong">
+					<tbody>
+						<tr class="title-row" *ngFor="let rsvp of userRsvps"
+						(click)="routeToEventDetail(rsvp?.$key)" >
+							<td class="event-title"><h3> {{rsvp?.title}}</h3></td>
+						</tr>
+					</tbody>	
+				</table>
+			</span>
+			<span class="list-title">
+				<h3>My WaitList</h3>
+				<table  class="list-table table lessons-list card card-strong">
+					<tbody>
+						<tr #userRow class="title-row" *ngFor="let waitlist of userWaitlists" (click)="routeToEventDetail(waitlist?.$key)">
+							<td class="event-title"><h3> {{waitlist?.title}}</h3></td>
+						</tr>
+					</tbody>	
+				</table>
+			</span>
+		</div>

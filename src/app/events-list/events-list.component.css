@@ -5,7 +5,10 @@
 
 .new-event-container {
 	 margin-bottom: 15px;
-	 width: 400px;
 }
-
-
+.event-td-inner-element {
+	text-align: center;
+}
+.search-bar {
+	color: black;
+}

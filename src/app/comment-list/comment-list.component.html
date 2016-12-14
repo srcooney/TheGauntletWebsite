@@ -1,0 +1,13 @@
+
+<input type="text" placeholder="comment" #input><button class="btn-black" (click)="saveComment(input)">Submit</button>
+<div class="comment-table">
+	<span>
+<table *ngIf="comments != undefined" class=" table lessons-list card card-strong">
+	<tbody>
+		<tr  *ngFor="let comment of comments">
+			<td class="event-title"><p><b>{{comment.displayName}}:  </b>{{comment.comment}}</p></td>
+		</tr>
+	</tbody>	
+</table>
+</span>
+</div>

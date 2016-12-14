@@ -1,8 +1,14 @@
 import {Route} from "@angular/router";
 import {EventsListComponent} from "./events-list/events-list.component";
 import {NewEventComponent} from "./new-event/new-event.component";
-import {LoginComponent} from "./login/login.component";
+import {EditEventComponent} from "./edit-event/edit-event.component";
+import {DuplicateEventComponent} from "./duplicate-event/duplicate-event.component";
 import {MyAccountComponent} from "./my-account/my-account.component";
+import {AdminComponent} from "./admin/admin.component";
+import {CalendarComponent} from "./calendar/calendar.component";
+import {EventDetailComponent} from "./event-detail/event-detail.component";
+import {AuthGuard} from "./shared/security/auth.guard";
+
 export const routerConfig : Route[] = [
 	{
 		path:'events',
@@ -19,14 +25,30 @@ export const routerConfig : Route[] = [
 			}
 		]
 	},
-	
+	{
+      path: 'event-detail/:id',
+      component: EventDetailComponent
+  },
+  {
+      path: 'edit/:id',
+      component: EditEventComponent
+  },
+  {
+      path: 'duplicate/:id',
+      component: DuplicateEventComponent
+  },
+  {
+      path: 'calendar',
+      component: CalendarComponent
+  },
+  {
+      path: 'admin',
+      component: AdminComponent,
+      canActivate: [AuthGuard]
+  },
 	{
       path: 'my-account',
       component: MyAccountComponent
-  },
-	{
-      path: 'login',
-      component: LoginComponent
   },
 	{
 		path: '',
