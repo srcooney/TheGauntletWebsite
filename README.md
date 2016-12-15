@@ -1,31 +1,32 @@
 # TheGauntletWebsite
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.20-4.
+To visit the website please click on this link. https://the-gauntlet-datastore.firebaseapp.com
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This project is a website built to handle event creation and user interaction with the created events. The website uses the angular2 framework with typescript for the front end and service handling. Firebase is used for the back end server and hosting.
 
-## Code scaffolding
+This project uses the following technologies:
+- generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.20-4.
+- moment.js to handle the date-time objects. (http://momentjs.com/)
+- Angular 2 calendar plugin from this github project. (https://github.com/mattlewis92/angular-bootstrap-calendar) 
+- AngularFire2 plugin to help with firebase backend handling. (https://github.com/angular/angularfire2)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class`.
+## Code Structure
 
-## Build
+The code is organized into components and services and has been put in to directories by the angular cli tool.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+The website has one main page that contains the top menu and footer. In between the top menu and the footer is the router outlet for displaying the different components.
 
-## Running unit tests
+There is an events service and user service which handles all of the firebase interaction so that all calls to the database are abstracted away from the components. There is also an authorization service which handles getting the authorized user and retreiving the application specific information about them.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Layout and Pages
 
-## Running end-to-end tests
+The website has a 6 main pages: My Account, Events, Event Details, Create/Modify Event, Calendar, Admin.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+- My Account: Shows the events that the user is rsvp'd and waitlisted to.
+- Events: Has a list of all events in chronological order.
+- Event Details: Displays the event title, description, rsvp, waitlist, and comments. The event can also be edited, duplicated, or deleted.
+- Create/Modify Event: Has a form that is empty if creating a new event, or prefilled with the events values if duplicating or editing the event.
+- Calendar: Has a calendar that displays all the events that are happening. The calendar has a month, week, or day view. The page also has links to the Gauntlet Google+ page and Patreon page.
+- Admin: Allows admins to set other users as admins, event creators, or patreon members.
 
-## Deploying to Github Pages
 
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
