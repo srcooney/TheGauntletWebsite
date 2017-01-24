@@ -3,3 +3,40 @@
 	width: 500px;
 	height: 500px;
 }
+.form-inside-input {
+	width: 175px;
+}
+.form-input {
+	width: 500px;
+}
+
+input.undefined.ui-inputtext.ui-corner-all.ui-state-default.ui-widget {
+	width: 500px;
+}
+
+.ui-inputfield {
+	width: 500px;
+    border-radius:0px;
+    box-shadow: none;
+}
+.calendarClass input {
+    width: 50px !important
+}
+.form-title {
+	padding-right: 115px;
+}
+
+.form-max-user {
+}
+
+.form-all-access {
+	padding-right: 36px;
+}
+
+.form-start {
+	padding-right: 35px;
+}
+
+.form-description-label {
+	padding-right: 67px;
+}

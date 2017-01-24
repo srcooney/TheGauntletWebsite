@@ -11,6 +11,7 @@ import {routerConfig} from "./router.config";
 import { EventsListComponent } from './events-list/events-list.component';
 import {EventsService} from './shared/model/events.service';
 import {UserService} from './shared/model/user.service';
+import {EmailService} from './shared/model/email.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { NewEventComponent } from './new-event/new-event.component';
@@ -24,13 +25,17 @@ import { TitleListComponent } from './title-list/title-list.component';
 import { CommentListComponent } from './comment-list/comment-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { CalendarModule } from 'angular-calendar';
+import { CalendarModule as CalendarEvents } from 'angular-calendar';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { DuplicateEventComponent } from './duplicate-event/duplicate-event.component';
 import { Calendar2Component } from './calendar2/calendar2.component';
 import { FooterComponent } from './footer/footer.component';
 import {AuthGuard} from "./shared/security/auth.guard";
-
+import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
+// import { moment-picker } from 'angular-moment-picker';
+// import * as angular from '@angular';
+// var myApp = angular.module('myApp', ['moment-picker']);
+import {CalendarModule as CalendarDateTime} from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +53,8 @@ import {AuthGuard} from "./shared/security/auth.guard";
     EditEventComponent,
     DuplicateEventComponent,
     Calendar2Component,
-    FooterComponent
+    FooterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -57,9 +63,12 @@ import {AuthGuard} from "./shared/security/auth.guard";
     AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routerConfig),
     ReactiveFormsModule,
-    CalendarModule.forRoot(),
+    CalendarEvents.forRoot(),
+    NKDatetimeModule,
+    CalendarDateTime
+    // 'moment-picker'
   ],
-  providers: [EventsService,AuthService,UserService,AuthGuard],
+  providers: [EventsService,AuthService,UserService,AuthGuard,EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

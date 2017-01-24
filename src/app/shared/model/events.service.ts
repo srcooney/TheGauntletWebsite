@@ -4,6 +4,7 @@ import {GauntletEvent} from "./gauntletEvent";
 import {User} from "./user";
 import {Observable,Subject} from "rxjs/Rx";
 import {Router} from "@angular/router";
+import {EmailService} from './email.service';
 // import {MomentModule} from 'angular2-moment/module';
 @Injectable()
 export class EventsService {
@@ -14,6 +15,7 @@ export class EventsService {
     private router:Router,
   	private db:AngularFireDatabase,
   	private af: AngularFire,
+    private emailService: EmailService,
   	@Inject(FirebaseRef) fb,) {
 			this.sdkDb = fb.database().ref();
   	}
@@ -127,6 +129,7 @@ export class EventsService {
   saveRsvp(eventKey: string,userKey:string,currNumUsers:number) {
     let dataToSave = {};
     currNumUsers += 1;
+    this.emailService.sendRSVPUpdateEmailFromKey(userKey,eventKey);
     dataToSave['events/'+eventKey+'/currNumUsers'] = currNumUsers;
     dataToSave[`rsvpPerEvent/${eventKey}/${userKey}`] = true;
     dataToSave[`rsvpPerUser/${userKey}/${eventKey}`] = true;
@@ -187,6 +190,10 @@ export class EventsService {
 
   routeToEventDetail(eventKey:string){
     this.router.navigate(['event-detail',eventKey]);
+  }
+
+  routeToEvents(){
+    this.router.navigate(['events']);
   }
 
   isRoom(event:GauntletEvent) {

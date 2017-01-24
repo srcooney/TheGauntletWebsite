@@ -16,8 +16,8 @@ export class NewEventComponent implements OnInit {
       this.eventsService.createNewEvent(form.value)
           .subscribe(
               () => {
-                  alert("Event created succesfully. Create another lesson ?");
-                  form.reset();
+                alert("Event created succesfully.");
+                this.eventsService.routeToEvents();
               },
               err => alert(`error creating lesson ${err}`)
           );

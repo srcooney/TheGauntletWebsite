@@ -3,6 +3,10 @@ import{EventsService} from '../shared/model/events.service';
 import{GauntletEvent} from '../shared/model/gauntletEvent';
 import {AuthService} from "../shared/security/auth.service";
 import {AuthInfo} from "../shared/security/auth-info";
+import {Observable,Subject} from "rxjs/Rx";
+// import { Http, Headers, RequestOptions } from "@angular/http";
+import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from '@angular/http';
+import "rxjs/Rx";
 
 @Component({
   selector: 'events-list',
@@ -15,7 +19,15 @@ export class EventsListComponent implements OnInit {
   filteredEvents:GauntletEvent[];
   auth: any;
   user: any;
+
+    public recipient: string;
+    public subject: string;
+    public message: string;
+    private mailgunUrl: string = "sandboxc5c9e5273c6d427981361947fdf91b7d.mailgun.org";
+    private apiKey: string = "a2V5LTVjM2Q0Y2VjMDcyMWE4NmQ4NWM4YzBkYjlkMzk2MDlk";
+
   constructor(
+    private http: Http,
   	private eventsService: EventsService,
     private authService:AuthService,
     ) { 
@@ -45,5 +57,4 @@ export class EventsListComponent implements OnInit {
   routeToEventDetail(eventKey:string){
     this.eventsService.routeToEventDetail(eventKey);
   }
-
 }

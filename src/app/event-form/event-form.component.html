@@ -11,26 +11,35 @@
             </div>
         </div>   
         <div class="form-field">
-            <label>Title:</label>
-            <input name="title" formControlName="title">
+            <label class="form-title">Title:</label>
+            <span class="form-input"><input class="form-inside-input" name="title" formControlName="title"></span>
             <div class="field-error-message" *ngIf="isErrorVisible('title','required')">field is mandatory</div>
         </div>
         <div class="form-field">
-            <label>Max Number of Users:</label>
-            <input type="number" name="maxNumUsers" formControlName="maxNumUsers">
+            <label class="form-max-user">Max Number of Users:</label>
+            <span class="form-input"><input class="form-inside-input" type="number" name="maxNumUsers" formControlName="maxNumUsers"></span>
+            <div class="field-error-message" *ngIf="isErrorVisible('maxNumUsers','required')">field is mandatory</div>
         </div>
         <div class="form-field">
-            <label>All Access Time:</label>
-            <input [value]="allAccessTime" 
-            (change)="allAccessTime=$event.target.value" name="allAccessTime" formControlName="allAccessTime" type="datetime-local">
+            <label class="form-all-access">All Access Time:</label>
+            <span class="form-input"><p-calendar [(ngModel)]="allAccessTime" showTime="showTime" hourFormat="24" class="form-input"
+            (change)="allAccessTime=$event.target.value" name="allAccessTime" formControlName="allAccessTime" type="datetime"></p-calendar></span>
+            <!-- <input class="form-input" [value]="allAccessTime" 
+            (change)="allAccessTime=$event.target.value" name="allAccessTime" formControlName="allAccessTime" type="datetime" placeholder="MM/DD/YYYY HH:mm (24 hour)"> -->
+            <div class="field-error-message" *ngIf="isErrorVisible('allAccessTime','required')">field is mandatory</div>
+            <div class="field-error-message" *ngIf="isErrorVisible('allAccessTime','dateTimeValid')">Date time Invalid MM/DD/YYYY HH:mm (24 hour)</div>
         </div>
         <div class="form-field">
-            <label>Event Start Date:</label>
-            <input [value]="eventStartTime" 
-            (change)="eventStartTime=$event.target.value" name="eventStartTime" formControlName="eventStartTime" type="datetime-local">
+            <label class="form-start">Event Start Date:</label>
+            <span class="form-input"><p-calendar [(ngModel)]="eventStartTime" showTime="showTime" hourFormat="24" styleClass="calendarClass"
+            (change)="eventStartTime=$event.target.value" name="eventStartTime" formControlName="eventStartTime" type="datetime"></p-calendar></span>
+            <!-- <input class="form-input" [value]="eventStartTime" 
+            (change)="eventStartTime=$event.target.value" name="eventStartTime" formControlName="eventStartTime" type="datetime" placeholder="MM/DD/YYYY HH:mm (24 hour)"> -->
+            <div class="field-error-message" *ngIf="isErrorVisible('eventStartTime','required')">field is mandatory</div>
+            <div class="field-error-message" *ngIf="isErrorVisible('eventStartTime','dateTimeValid')">Date time Invalid MM/DD/YYYY HH:mm (24 hour)</div>
         </div>
         <div class="form-field">
-            <label>Description:</label>
+            <label class="form-description-label">Description:</label>
             <textarea class="form-description" name="title" formControlName="description"></textarea>
             <div class="field-error-message"
             *ngIf="isErrorVisible('description','required')">field is mandatory</div>
