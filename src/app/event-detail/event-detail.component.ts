@@ -107,4 +107,10 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
+  // rsvp_button_clicked(){
+  //   console.log("rsvp_button clicked")
+  //   window.location.reload()
+  //   // this.eventsService.routeToEventDetail(this.event.$key);
+  // }
+
 }
