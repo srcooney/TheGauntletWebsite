@@ -19,6 +19,7 @@ export class EventsListComponent implements OnInit {
   filteredEvents:GauntletEvent[];
   auth: any;
   user: any;
+  imageUrl;
 
     public recipient: string;
     public subject: string;
@@ -42,8 +43,26 @@ export class EventsListComponent implements OnInit {
 
   	this.eventsService.findAllEvents()
      .subscribe(
-        events => this.allEvents = this.filteredEvents = events
+        events => 
+        {
+          this.allEvents = this.filteredEvents = events;
+          this.filteredEvents = this.eventsService.getAllFutureEvents(this.allEvents);
+        }
       );
+
+    // var img = document.getElementById('image');
+    //  this.eventsService.displayFile(img)
+//      .getDownloadURL()
+//      .then(function(url) {
+//         // console.log(url);
+//         this.imageUrl =  url;
+//         console.log(this.imageUrl);
+//       }).catch(function(error) {
+//         // Handle any errors
+//       });
+// ;
+//      console.log(this.imageUrl);
+     // console.log()
   }
 
   selectEvent(gEvent: GauntletEvent){
@@ -51,10 +70,21 @@ export class EventsListComponent implements OnInit {
   }
 
   search(search:string){
-    this.filteredEvents = this.allEvents.filter(event => event.title.includes(search));
+    this.filteredEvents = this.allEvents.filter(event => event.title.toLowerCase().includes(search.toLowerCase()));
   }
 
   routeToEventDetail(eventKey:string){
     this.eventsService.routeToEventDetail(eventKey);
   }
+
+  // uploadFile(file,image){
+  //   console.log(file);
+  //   console.log(file.files[0]);
+  //   console.log(image);
+  //   this.eventsService.uploadFile(file.files[0],image);
+  // }
+
+  // displayFile(){
+  //   this.eventsService.displayFile();
+  // }
 }

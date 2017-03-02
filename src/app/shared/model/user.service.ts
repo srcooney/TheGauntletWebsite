@@ -115,6 +115,11 @@ this.sdkDb = fb.database().ref();
     return this.findEventsFromEventKeys(eventKeys);
   }
 
+  getCreatorListFromUserKey(userKey:string): Observable<GauntletEvent[]>{
+    const eventKeys = this.getEventKeysFromUserKey("eventsCreatedPerUser/",userKey);
+    return this.findEventsFromEventKeys(eventKeys);
+  }
+
   getRsvpListFromUserKey(userKey:string): Observable<GauntletEvent[]>{
   	const eventKeys = this.getEventKeysFromUserKey("rsvpPerUser/",userKey);
 	  return this.findEventsFromEventKeys(eventKeys);

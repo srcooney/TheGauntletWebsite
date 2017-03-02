@@ -58,7 +58,7 @@ export class AuthService {
         let dataToSave = {};
 
         dataToSave["users/" + newUserKey] = userToSave;
-
+        dataToSave["rsvpPerUser/" + newUserKey] = {default:true};
         this.firebaseUpdate(dataToSave);
         });
 

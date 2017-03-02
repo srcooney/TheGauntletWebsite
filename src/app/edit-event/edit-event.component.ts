@@ -24,8 +24,15 @@ export class EditEventComponent implements OnInit {
   }
 
   update(event,eventUpdate) {
-      this.eventsService.updateEvent(event,eventUpdate);
+      this.eventsService.updateEvent(event,eventUpdate,this.file);
       this.eventsService.routeToEventDetail(event.$key);
+  }
+
+  file;
+  handleFileUpdated(file){
+    console.log("handleFileUpdated")
+    console.log(file);
+    this.file = file
   }
 
 }

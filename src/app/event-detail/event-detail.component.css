@@ -1,13 +1,44 @@
 .event-creator-btn {
-	float: right;
-	position: relative;
+	display: table-header-group;
+	text-align: right;
 }
 
 .description {
+	margin-top: 50px;
+	min-height: 200px;
 	text-align: center;
 }
 .description-text {
-	width: 400px;
+	width: 100vmin;
+	max-width: 450px;
 	text-align: justify;
 	white-space: pre-wrap;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.event-image {
+	box-shadow: 0px 0px 20px 3px grey;
+	width:55vmin;
+	height:55vmin;
+	max-width: 275px;
+	max-height: 275px;
+}
+
+.dropdown-menu {
+	display: block;
+	width:200px;
+	position: relative;
+}
+.dropdown {
+	width: 200px;
+}
+
+.dropdown-toggle{
+	width: 200px;
+	float: right;
+}
+
+.rsvp-event-detail {
+	margin-top: 30px;
 }

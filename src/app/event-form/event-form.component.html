@@ -1,4 +1,5 @@
 
+
 <form [formGroup]="form" autocomplete="off" novalidate class="lesson-form">
 
     <fieldset>
@@ -10,6 +11,9 @@
                 </div> 
             </div>
         </div>   
+        <div class="event-help">
+            <span  (click)="help()">Help?</span>
+        </div>
         <div class="form-field">
             <label class="form-title">Title:</label>
             <span class="form-input"><input class="form-inside-input" name="title" formControlName="title"></span>
@@ -37,6 +41,11 @@
             (change)="eventStartTime=$event.target.value" name="eventStartTime" formControlName="eventStartTime" type="datetime" placeholder="MM/DD/YYYY HH:mm (24 hour)"> -->
             <div class="field-error-message" *ngIf="isErrorVisible('eventStartTime','required')">field is mandatory</div>
             <div class="field-error-message" *ngIf="isErrorVisible('eventStartTime','dateTimeValid')">Date time Invalid MM/DD/YYYY HH:mm (24 hour)</div>
+        </div>
+        <div class="form-field">
+            <label class="form-picture">Event Picture:</label>
+            <span class="form-input"><input class="input-pic" #input (change)="uploadFile(input)" type="file" name="imageURL" formControlName="imageURL" /></span>
+            <!-- <input #input type="file" (change)="uploadFile(input,image)"  name="image" formControlName="image" /> -->
         </div>
         <div class="form-field">
             <label class="form-description-label">Description:</label>

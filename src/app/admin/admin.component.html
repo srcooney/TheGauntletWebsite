@@ -1,8 +1,12 @@
 	<div class="banner-container">
 		<div class="banner"></div>
 		<div class="banner-content">
+			<div class="cust-table-row">
+				<div class="cust-table-cell">		
 			<div>
 				<span class="banner-title">Admin Page</span>
+			</div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -13,7 +17,7 @@
 </div>
 
 <div class="listView">
-<span>
+<span class="list-title">
 <h3>{{trueAttributeTitle}}</h3>
 <table  class="list-table table lessons-list card card-strong">
 	<tbody>
@@ -27,7 +31,7 @@
 	<div>&larr;</div>
 	<div>&rarr;</div>
 </span>
-<span >
+<span class="list-title">
 <h3>{{falseAttributeTitle}}</h3>
 <table  class="list-table table lessons-list card card-strong">
 	<tbody>
@@ -38,3 +42,5 @@
 </table>
 </span>
 </div>
+<div *ngIf="isChrome">This is a Chrome Browser</div>
+<div *ngIf="isSafari">This is a Safari Browser</div>

@@ -80,7 +80,7 @@ export class CalendarComponent implements OnInit {
 					    start: event.eventStartTime,
 					    title:event.title,
 					    color: colors.red,
-					    actions: this.actions
+					    // actions: this.actions
 					  }
   					);
   			});

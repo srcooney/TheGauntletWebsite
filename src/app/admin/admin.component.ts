@@ -18,6 +18,7 @@ export class AdminComponent implements OnInit {
   falseAttributeUsers:any;
   trueAttributeTitle:string;
   falseAttributeTitle:string;
+
   constructor(
   	private userService:UserService,) { }
 
@@ -26,6 +27,10 @@ export class AdminComponent implements OnInit {
     // this.falseAttributeUsers = [{displayName:"None"}];
     this.listView="admin";
     this.switchView(this.listView);
+
+
+    // if (isChrome) alert("You are using Chrome!");
+    // if (isSafari) alert("You are using Safari!");
   }
 
   updateAttributeStatus(userKey:string,attribute:string,status:boolean){

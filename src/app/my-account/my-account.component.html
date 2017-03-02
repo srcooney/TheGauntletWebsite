@@ -1,35 +1,53 @@
 	<div class="banner-container">
 		<div class="banner"></div>
 		<div class="banner-content">
-			<div>
-				<span class="banner-title">My Account</span>
-			</div>
-			<div>
-				<span *ngIf="authInfo.isLoggedIn()">Welcome {{authInfo.displayName}} to your account details!</span>
+			<div class="cust-table-row">
+				<div class="cust-table-cell">
+					<div>
+						<span class="banner-title">My Account</span>
+					</div>
+					<div>
+						<span *ngIf="authInfo.isLoggedIn()">Welcome {{authInfo.displayName}} to your account details!</span>
+						<div>
+							<div>
+								<span>You are a: </span>
+							</div>
+							<span class="btn-black my-account-btn" *ngIf="authInfo.isEventCreator()">Event Creator</span>
+							<span class="btn-black my-account-btn" *ngIf="authInfo.isAdmin()">Admin</span>
+							<span class="btn-black my-account-btn" *ngIf="authInfo.isPatreon7Member()">Patreon Member</span>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 
-			<div >
-			<span class="list-title">
-				<h3>My Rsvps</h3>
-				<table  class="list-table table lessons-list card card-strong">
-					<tbody>
-						<tr class="title-row" *ngFor="let rsvp of userRsvps"
-						(click)="routeToEventDetail(rsvp?.$key)" >
-							<td class="event-title"><h3> {{rsvp?.title}}</h3></td>
-						</tr>
-					</tbody>	
-				</table>
-			</span>
-			<span class="list-title">
-				<h3>My WaitList</h3>
-				<table  class="list-table table lessons-list card card-strong">
-					<tbody>
-						<tr #userRow class="title-row" *ngFor="let waitlist of userWaitlists" (click)="routeToEventDetail(waitlist?.$key)">
-							<td class="event-title"><h3> {{waitlist?.title}}</h3></td>
-						</tr>
-					</tbody>	
-				</table>
-			</span>
-		</div>
+<div *ngIf="authInfo.isEventCreator()">
+	<h3>Created Events</h3>
+	<table  class="list-table table lessons-list card card-strong">
+		<tbody>
+			<tr class="title-row" *ngFor="let event of creatorList"
+			(click)="routeToEventDetail(event?.$key)" >
+			<td class="event-title">
+				<h3 class="event-td-inner-element"> {{event?.title}}</h3>
+			</td>
+		</tr>
+	</tbody>	
+</table>
+</div>
+
+<div>
+	<h3>Events Waitlisted and Rsvped for</h3>
+	<div *ngIf="userRsvps?.length == 0"> Sorry you have no events scheduled right now!</div>
+	<table  class="list-table table lessons-list card card-strong">
+		<tbody>
+			<tr class="title-row" *ngFor="let rsvp of userRsvps"
+			(click)="routeToEventDetail(rsvp?.$key)" >
+			<td class="event-title">
+				<h3 class="event-td-inner-element"> {{rsvp?.title}}</h3>
+				<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="rsvp"></rsvp-button>
+			</td>
+		</tr>
+	</tbody>	
+</table>
+</div>

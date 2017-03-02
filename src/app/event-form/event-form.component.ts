@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {FormControl} from "@angular/forms";
 import {validateDate} from "../shared/validators/validateDate";
@@ -22,7 +22,8 @@ export class EventFormComponent implements OnInit,OnChanges {
         description: ['',Validators.required],
         eventStartTime: ['',[Validators.required,validateDate]],
         allAccessTime: ['',[Validators.required,validateDate]],
-        maxNumUsers: ['',Validators.required]
+        maxNumUsers: ['',Validators.required],
+        imageURL: ['']
     });
 
    }
@@ -33,14 +34,34 @@ export class EventFormComponent implements OnInit,OnChanges {
       this.allAccessTime="";
     };
   }
+  file:any;
+  @Output() fileUpdated = new EventEmitter();
+  uploadFile(input){
+    console.log(input.files[0]);
+    this.file = input.files[0];
+    this.fileUpdated.emit(this.file);
+    // console.log(this.form);
+    // // this.form.controls['image'].updateValue(input);
+    // // this.form.patchValue(changes['initialValue'].currentValue);
+    // this.form.controls['image'].setValue(input);
+    // // this.form.image.updateValue(input);
+    // console.log(this.form);
+    // this.form.patchValue({image: input.files[0]});
+    // console.log(this.form);
+  }
 
   ngOnChanges(changes:SimpleChanges) {
     console.log(changes)
         if (changes['initialValue']) {
+            var imageURL = changes['initialValue'].currentValue.imageURL;
+            changes['initialValue'].currentValue.imageURL = "";
+            console.log(changes['initialValue'].currentValue);
             this.form.patchValue(changes['initialValue'].currentValue);
+            changes['initialValue'].currentValue.imageURL = imageURL;
+            console.log(changes['initialValue'].currentValue);
             var moment = require('moment');
-            this.eventStartTime = moment(changes['initialValue'].currentValue.eventStartTime).format('DD/MM/YYYY HH:mm').toString();
-            this.allAccessTime = moment(changes['initialValue'].currentValue.allAccessTime).format('DD/MM/YYYY HH:mm').toString();
+            this.eventStartTime = moment(changes['initialValue'].currentValue.eventStartTime).format('MM/DD/YYYY HH:mm').toString();
+            this.allAccessTime = moment(changes['initialValue'].currentValue.allAccessTime).format('MM/DD/YYYY HH:mm').toString();
         }
     }
 
@@ -80,6 +101,12 @@ export class EventFormComponent implements OnInit,OnChanges {
 
   get value() {
       return this.form.value;
+  }
+
+  help(){
+    alert("1. Set max number of users to a posative number.\n"+
+      "2. Date Time Format: MM/DD/YYYY HH:mm (24 hour)\n"+
+      "3. If you screwed up the date time and you can't submit the event, \nyou can reset the event by clicking on the date popup\n or by refreshing the page")
   }
 
 }

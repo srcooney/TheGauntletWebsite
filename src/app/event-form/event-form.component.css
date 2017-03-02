@@ -1,4 +1,10 @@
 
+.event-help {
+	width: 100%;
+	text-align: right;
+	color: red;
+}
+
 .form-description {
 	width: 500px;
 	height: 500px;
@@ -27,6 +33,7 @@ input.undefined.ui-inputtext.ui-corner-all.ui-state-default.ui-widget {
 }
 
 .form-max-user {
+	padding-right: 1px;
 }
 
 .form-all-access {
@@ -37,6 +44,13 @@ input.undefined.ui-inputtext.ui-corner-all.ui-state-default.ui-widget {
 	padding-right: 35px;
 }
 
+.form-picture {
+	padding-right: 54px;
+}
+
+.input-pic {
+	margin: auto;
+}
 .form-description-label {
 	padding-right: 67px;
 }

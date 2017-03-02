@@ -1,5 +1,90 @@
+a.ui-datepicker-next.ui-corner-all {
+    top: 3pt;
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-right: 4px solid black;
+    border-top: 4px solid black;
+    transform: rotate(45deg);
+    margin-right: 5px;
+}
+
+.fa.fa-angle-right {
+    display: none !important;
+}
+
+
+.ui-datepicker-prev.ui-corner-all {
+    top:3pt !important;
+    content: "";
+    display: inline-block;
+    width: 14px !important;
+    height: 14px !important;
+    border-left: 4px solid black;
+    border-bottom: 4px solid black;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+                        
+.fa.fa-angle-left {
+    display: none !important;
+}
+
+p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div.ui-hour-picker > a:nth-child(1) {
+    top:3pt;
+    content: "";
+    width: 8px !important;
+    height: 8px !important;
+    border-left: 4px solid black;
+    border-top: 4px solid black;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div.ui-minute-picker > a:nth-child(1) {
+    top:3pt;
+    content: "";
+    width: 8px !important;
+    height: 8px !important;
+    border-left: 4px solid black;
+    border-top: 4px solid black;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div.ui-hour-picker > a:nth-child(4) {
+    top:3pt;
+    content: "";
+    width: 8px !important;
+    height: 8px !important;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+
+p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div.ui-minute-picker > a:nth-child(4) {
+    top:3pt;
+    content: "";
+    width: 8px !important;
+    height: 8px !important;
+    border-right: 4px solid black;
+    border-bottom: 4px solid black;
+    transform: rotate(45deg);
+    margin-left: 5px;
+}
+.fa.fa-angle-up {
+    display: none !important;
+}
+
+.fa.fa-angle-down {
+    display: none !important;
+}
+
 .banner-container {
-    height:500px;
+    height:70vmin;
+    max-height: 500px;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -8,12 +93,42 @@
     filter:blur(20px);
     position: absolute;
     width: 100%;
-    height:500px;
+    height:70vmin;
+    max-height: 500px;
     background-size:100%;
     background-repeat: no-repeat;
     background-image:url('gauntletlogo.png');
 }
+.cust-table-row {
+    display: table-row;
+}
+.cust-table-cell {
+    display: table-cell;
+    /*vertical-align: middle;*/
+    padding-top: 12vmin;
+}
+.banner-content {
+    display: table;
+    color: white;
+    height: 70vmin;
+    max-height: 500px;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+}
 
+.banner-title {
+    text-transform: none;
+    font-size: 15vmin;
+    vertical-align: middle;
+}
+
+.banner-event-title {
+    text-transform: none;
+    color: white;
+    font-size: 9vmin;
+    vertical-align: middle;
+}
 .patreon-container {
     text-align: center;
     margin-top: 10px;
@@ -29,28 +144,6 @@
     width: inherit;
     height: inherit;
 }
-
-.banner-title {
-    text-transform: none;
-    font-size: 120px;
-    padding-top: 125px;
-    vertical-align: middle;
-}
-
-.banner-event-title {
-    text-transform: none;
-    color: white;
-    font-size: 60px;
-    padding-top: 200px;
-    vertical-align: middle;
-}
-.banner-content {
-    color: white;
-    width: 100%;
-    text-align: center;
-    position: absolute;
-}
-
 .main-container {
     text-align: center;
 }
@@ -80,13 +173,16 @@
 
 
 .list-title {
-    width: 400px;
+    width: 90vmin;
+    max-width: 400px;
 }
 .list-arrows {
     vertical-align: -75px;
 }
 .list-table{
-    width: 400px !important;
+   /* margin:0;
+   padding:0;
+    width: 100% !important;*/
 }
 
 .lesson {
@@ -96,7 +192,7 @@
 
 .lessons-list {
     padding: 10px 10px 0 10px;
-    display: table-cell;
+    /*display: table-cell;*/
     margin-bottom: 15px;
 }
 

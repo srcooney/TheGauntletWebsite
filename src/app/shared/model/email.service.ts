@@ -19,7 +19,7 @@ this.af.database.object('events/'+eventKey).map(GauntletEvent.fromJson).first()
   // this.af.database.list('events/eventKey').map(GauntletEvent.fromJsonList).first()
   .subscribe(
   	event => {
-  		// console.log("sendRSVPUpdateEmail userKey = "+userKey+" eventKey = "+eventKey);
+  		console.log("sendRSVPUpdateEmail userKey = "+userKey+" eventKey = "+eventKey);
   		// console.log(event);
 
   		this.af.database.object('users/'+userKey).map(User.fromJson).first()
@@ -29,7 +29,7 @@ this.af.database.object('events/'+eventKey).map(GauntletEvent.fromJson).first()
 			  		// console.log(user);
 			  		// console.log(event.title+user.displayName+user.email+event.eventStartTime);
             var moment = require('moment');
-            var dateTime = moment(event.eventStartTime).local().format("dddd, MMMM Do YYYY, h:mm:ss a z").toString();
+            var dateTime = moment(event.eventStartTime).local().format("dddd, MMMM Do YYYY, h:mm a").toString();
 			  		this.sendRSVPEmail(user.email,user.displayName,event.title,dateTime)
 			  	});
 
@@ -44,6 +44,7 @@ sendRSVPEmail(email,displayName,title,eventStartTime){
 }
 
 sendEmailTo(emailTo:string,subject:string,body:string){
+  // console.log("sendEmailTo !!!!!!!!!!!!!!!!!" +body);
   var url:string = "https://emailserver-153100.appspot.com/";
   this.http.get(url+"?emailTo="+emailTo+"&subject="+subject+"&body="+body)
   .catch((err:any) =>{ 

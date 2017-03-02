@@ -4,11 +4,11 @@
 }
 input {
 	margin-top: 15px;
-	width: 400px;
+	width: 80vmin;
 }
 
 p {
-	width: 440px;
+	width: 90vmin;
 }
 
 .comment-table {

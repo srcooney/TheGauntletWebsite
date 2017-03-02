@@ -28,7 +28,6 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarModule as CalendarEvents } from 'angular-calendar';
 import { EditEventComponent } from './edit-event/edit-event.component';
 import { DuplicateEventComponent } from './duplicate-event/duplicate-event.component';
-import { Calendar2Component } from './calendar2/calendar2.component';
 import { FooterComponent } from './footer/footer.component';
 import {AuthGuard} from "./shared/security/auth.guard";
 import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
@@ -52,7 +51,6 @@ import {CalendarModule as CalendarDateTime} from 'primeng/primeng';
     CalendarComponent,
     EditEventComponent,
     DuplicateEventComponent,
-    Calendar2Component,
     FooterComponent,
 
   ],

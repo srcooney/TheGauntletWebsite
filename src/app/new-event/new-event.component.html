@@ -1,4 +1,4 @@
-<event-form #form ></event-form>
+<event-form #form (fileUpdated)="handleFileUpdated($event)"></event-form>
 
 <button [disabled]="!form.valid"
         (click)="save(form)">Create New Event</button>
