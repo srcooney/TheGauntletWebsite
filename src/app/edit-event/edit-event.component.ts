@@ -22,8 +22,9 @@ export class EditEventComponent implements OnInit {
 
       });
   }
-
+  uploading = false;
   update(event,eventUpdate) {
+    this.uploading = true;
       this.eventsService.updateEvent(event,eventUpdate,this.file);
       this.eventsService.routeToEventDetail(event.$key);
   }

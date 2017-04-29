@@ -64,7 +64,20 @@ export class EventsService {
     return events.filter(event => 
       {
         var isold = moment(event.eventStartTime).fromNow();
+        console.log(isold);
+        if(isold.includes("6 months ago")) {
+          this.removeEvent(event.$key);
+        }
         return !isold.includes("ago");
+      });
+  }
+
+  getAllPastEvents(events){
+    var moment = require('moment');
+    return events.filter(event => 
+      {
+        var isold = moment(event.eventStartTime).fromNow();
+        return isold.includes("ago");
       });
   }
   
@@ -137,7 +150,7 @@ export class EventsService {
   updateEvent(event,eventUpdate,file): Observable<any> {
       console.log(event)
       console.log(eventUpdate)
-      const eventToSave = Object.assign({},eventUpdate,{currNumUsers:event.currNumUsers,imageURL:event.imageURL});
+      const eventToSave = Object.assign({},eventUpdate,{currNumUsers:event.currNumUsers,imageURL:event.imageURL,eventCreator:event.eventCreator});
       var moment = require('moment');
       moment().format();
       //convert from UTC to central time zone
@@ -354,17 +367,25 @@ if(file != undefined){
 
   getRsvpsKeysFromEventKey(eventKey:string){
     const rsvpKeys = this.af.database.list("rsvpPerEvent/"+eventKey);
+    console.log("getRsvpsKeysFromEventKey");
+    console.log()
     const rsvpSorted = this.sortRsvpKeysByDatetime(rsvpKeys);
     return rsvpSorted;
   }
 
   sortRsvpKeysByDatetime(rsvpKeys){
-   return rsvpKeys.map( rsvpkys => 
+   return rsvpKeys.do(console.log).map( rsvpkys => 
      {
        return rsvpkys.sort(function(a,b){
+         console.log("b.$key = "+ b.$key+ "a.$key = " +a.$key);
+         console.log("b.time = "+ b.time+ "a.time = " +a.time);
+         // var moment = require('moment');
+         // console.log(moment(b.time).isAfter(a.time));
+         // console.log(btime<atime);
         var btime = new Date(b.time);
         var atime = new Date(a.time);
-        return btime<atime; 
+        return btime<atime ? 1:-1; 
+        // return moment(b.time).isAfter(a.time);
       })
      });
   }

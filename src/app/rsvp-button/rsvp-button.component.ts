@@ -42,8 +42,14 @@ clicked = false;
   ngOnInit() {
 
     // this.isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    this.isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+    // var isSafari = !navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+    // this.isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+        // this.isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
+        var isSafari = !(navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
+               navigator.userAgent && !navigator.userAgent.match('CriOS'));
+        console.log(navigator)
 
+    // this.isSafari= false;
 
     this.authService.authInfo$.subscribe(authInfo =>
       {
@@ -92,6 +98,11 @@ clicked = false;
          );
      };
       }); 
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   }
 
   changeText (){
@@ -158,4 +169,5 @@ clicked = false;
 
   //        send_email_subscription.unsubscribe();
   // }
+
 }

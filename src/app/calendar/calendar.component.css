@@ -23,3 +23,11 @@ a {
     width: 144px;
     height: 77px;
 }
+
+.previous {
+	width: 150px;
+}
+
+.next {
+	width: 150px;
+}

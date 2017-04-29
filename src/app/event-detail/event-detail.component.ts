@@ -25,6 +25,8 @@ export class EventDetailComponent implements OnInit {
   imageURL:any;
   emailButtonText:string = "Show Emails";
 
+  isThisEventCreator:boolean;
+
   constructor(
     private authService:AuthService,
     private router:Router,
@@ -33,17 +35,27 @@ export class EventDetailComponent implements OnInit {
     public zone: NgZone,) { }
   
   ngOnInit() {
-    this.authService.authInfo$.subscribe(authInfo =>  this.authInfo = authInfo);
+    this.authService.authInfo$.subscribe(authInfo =>  {
+      this.authInfo = authInfo;
 
-  	const eventId = this.route.snapshot.params['id'];
-  	this.eventsService.getEventById(eventId)
-  	.subscribe(event => 
+
+    const eventId = this.route.snapshot.params['id'];
+    this.eventsService.getEventById(eventId)
+    .subscribe(event => 
       {
         this.event = event;
+        if(this.authInfo.isLoggedIn()){
+          this.isThisEventCreator = event.eventCreator == this.authInfo.displayName;
+        } else {
+          this.isThisEventCreator = false;
+        }
+        
         this.eventsService.getUserKeysFromRsvpKeys(eventId).subscribe(
         users =>
         {
           users = users.filter(function( obj ) { return obj.$key !== 'default';})
+          console.log(this.eventRsvps);
+          console.log(this.eventWaitlists);
           this.eventRsvps = users.slice(0,this.event.maxNumUsers);
           this.eventWaitlists = users.slice(this.event.maxNumUsers);
           this.currentNumRsvps = this.eventRsvps.length;
@@ -55,6 +67,16 @@ export class EventDetailComponent implements OnInit {
         this.dateTime = moment(event.eventStartTime).local().format("dddd, MMMM Do YYYY, h:mm a").toString();
       }
       );
+
+
+
+    }
+
+
+
+      );
+
+  	
   }
 
   removeEvent(eventKey:string){

@@ -30,7 +30,9 @@ export class DuplicateEventComponent implements OnInit {
       });
   }
 
+  uploading = false;
   createDuplicateEvent(form) {
+    this.uploading = true;
       this.eventsService.createNewEvent(form.value,this.file,this.authInfo)
           .subscribe(
               () => {

@@ -1,4 +1,5 @@
 <event-form #form (fileUpdated)="handleFileUpdated($event)"></event-form>
 
-<button [disabled]="!form.valid"
+<div *ngIf="uploading" class="uploading">Uploading Event</div>
+<button [disabled]="!form.valid || uploading"
         (click)="save(form)">Create New Event</button>

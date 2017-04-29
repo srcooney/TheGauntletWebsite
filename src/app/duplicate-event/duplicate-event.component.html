@@ -1,3 +1,4 @@
 <event-form [initialValue]="event" #form (fileUpdated)="handleFileUpdated($event)"></event-form>
 
+<div *ngIf="uploading" class="uploading">Uploading Event</div>
 <button (click)="createDuplicateEvent(form)">Create New Event</button>

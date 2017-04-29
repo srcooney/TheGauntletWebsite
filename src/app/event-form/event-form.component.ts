@@ -104,9 +104,10 @@ export class EventFormComponent implements OnInit,OnChanges {
   }
 
   help(){
-    alert("1. Set max number of users to a posative number.\n"+
-      "2. Date Time Format: MM/DD/YYYY HH:mm (24 hour)\n"+
-      "3. If you screwed up the date time and you can't submit the event, \nyou can reset the event by clicking on the date popup\n or by refreshing the page")
+    alert(
+"1. Only use positive whole numbers for the 'Max Number of Users.'\n"+
+"2. Carefully match the Date Time Format. MM/DD/YYYY HH:mm (24 hour).\n"+
+"3. If the Date Time Format is not working, try clicking on the calendar pop up again. If that is frozen, refresh the page.\n")
   }
 
 }

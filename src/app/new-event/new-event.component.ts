@@ -18,7 +18,10 @@ export class NewEventComponent implements OnInit {
     this.authService.authInfo$.subscribe(authInfo =>  this.authInfo = authInfo);
   }
 
+  uploading = false;
+
   save(form) {
+    this.uploading = true;
     console.log(this.file);
       this.eventsService.createNewEvent(form.value,this.file,this.authInfo).do(console.log)
           .subscribe(

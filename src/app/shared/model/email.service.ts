@@ -44,9 +44,13 @@ sendRSVPEmail(email,displayName,title,eventStartTime){
 }
 
 sendEmailTo(emailTo:string,subject:string,body:string){
+  var subjectEncoded = encodeURIComponent(subject);
+  var bodyEncoded = encodeURIComponent(body);
+  console.log(subjectEncoded)
+  console.log(bodyEncoded)
   // console.log("sendEmailTo !!!!!!!!!!!!!!!!!" +body);
   var url:string = "https://emailserver-153100.appspot.com/";
-  this.http.get(url+"?emailTo="+emailTo+"&subject="+subject+"&body="+body)
+  this.http.get(url+"?emailTo="+emailTo+"&subject="+subjectEncoded+"&body="+bodyEncoded)
   .catch((err:any) =>{ 
       console.log("Something is wrong..");
       return Observable.of(undefined);

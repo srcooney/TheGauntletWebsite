@@ -14,7 +14,9 @@ export class MyAccountComponent implements OnInit {
   user: any;
 
 	userRsvps : any;
+  filteredUserRsvps;
   creatorList : any;
+  filteredCreatorList;
 
   userWaitlists : any;
 
@@ -29,6 +31,8 @@ export class MyAccountComponent implements OnInit {
   waitlistRoutes: any;
 
   authInfo: AuthInfo;
+
+  pastOrFutureEvents: string = "Past Events";
   constructor(
     private eventsService: EventsService,
   	private userService:UserService,
@@ -43,7 +47,12 @@ export class MyAccountComponent implements OnInit {
         this.authInfo = authInfo;
         if(this.authInfo.isLoggedIn()){
           this.getRsvpList(this.authInfo.key);
-          this.userService.getCreatorListFromUserKey(this.authInfo.key).subscribe(creatorList => this.creatorList = creatorList);
+          this.userService.getCreatorListFromUserKey(this.authInfo.key).subscribe(creatorList => 
+            {
+              this.creatorList = creatorList;
+              // this.creatorList = this.eventsService.getAllFutureEvents(this.creatorList);
+              this.filteredCreatorList = this.eventsService.getAllFutureEvents(this.creatorList);
+            });
         }
       });
 
@@ -57,6 +66,9 @@ export class MyAccountComponent implements OnInit {
       {
         console.log(eventList);
         this.userRsvps = eventList.filter(function( obj ) { return obj.$key !== 'default';})
+        this.filteredUserRsvps = this.eventsService.getAllFutureEvents(this.userRsvps);
+
+        
         console.log(this.userRsvps);
         // this.userRsvps = eventList;
         // for(var i=0;i<eventList.length;i++){
@@ -89,5 +101,20 @@ export class MyAccountComponent implements OnInit {
 
   routeToEventDetail(eventKey:string){
     this.eventsService.routeToEventDetail(eventKey);
+  }
+
+  showPastEventsBool = false;
+
+  showPastEvents(){
+    this.showPastEventsBool = !this.showPastEventsBool;
+    if(!this.showPastEventsBool) {
+      this.pastOrFutureEvents = "Past Events";
+      this.filteredUserRsvps = this.eventsService.getAllFutureEvents(this.userRsvps);
+      this.filteredCreatorList = this.eventsService.getAllFutureEvents(this.creatorList);
+    } else {
+      this.pastOrFutureEvents = "Future Events";
+      this.filteredUserRsvps = this.eventsService.getAllPastEvents(this.userRsvps);
+      this.filteredCreatorList = this.eventsService.getAllPastEvents(this.creatorList);
+    }
   }
 }
