@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import{UserService} from '../shared/model/user.service';
+import{StatisticsService} from '../shared/model/statistics.service';
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -20,6 +21,7 @@ export class AdminComponent implements OnInit {
   falseAttributeTitle:string;
 
   constructor(
+    private statisticsService:StatisticsService,
   	private userService:UserService,) { }
 
   ngOnInit() {
@@ -38,6 +40,21 @@ export class AdminComponent implements OnInit {
   }
 
   switchView(view:string){
+    if(view == "stats")
+      this.switchViewStats();
+    else
+      this.switchViewLists(view);
+  }
+
+  aveRsvps;
+  switchViewStats(){
+    this.listView = "stats";
+    this.aveRsvps = this.statisticsService.getEventAveRsvps();
+    console.log("switchViewStats")
+    console.log(this.aveRsvps)
+  }
+
+  switchViewLists(view){
     this.userService.findAllUsersByAttribute(this.listView,true)
       .subscribe(trueAttributeUsers => 
         {

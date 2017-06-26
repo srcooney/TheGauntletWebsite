@@ -12,6 +12,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 import {EventsService} from './shared/model/events.service';
 import {UserService} from './shared/model/user.service';
 import {EmailService} from './shared/model/email.service';
+import {StatisticsService} from './shared/model/statistics.service';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import { NewEventComponent } from './new-event/new-event.component';
@@ -66,7 +67,7 @@ import {CalendarModule as CalendarDateTime} from 'primeng/primeng';
     CalendarDateTime
     // 'moment-picker'
   ],
-  providers: [EventsService,AuthService,UserService,AuthGuard,EmailService],
+  providers: [EventsService,AuthService,UserService,AuthGuard,EmailService,StatisticsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

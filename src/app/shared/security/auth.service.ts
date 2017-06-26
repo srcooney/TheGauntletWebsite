@@ -3,7 +3,7 @@ import {Observable, Subject, BehaviorSubject} from "rxjs/Rx";
 import {AuthInfo} from "./auth-info";
 import {Router} from "@angular/router";
 import{UserService} from '../model/user.service';
-import {FirebaseRef,AngularFire,AngularFireAuth,AuthMethods,AuthProviders,FirebaseAuth,FirebaseAuthState} from "angularfire2";
+import {FirebaseRef,AngularFire,AngularFireAuth,AuthMethods,AuthProviders,FirebaseAuthState} from "angularfire2";
 
 @Injectable()
 export class AuthService {
@@ -17,7 +17,7 @@ export class AuthService {
 
   constructor(
     private userService: UserService,
-    private auth: FirebaseAuth,
+    private auth: AngularFireAuth,
     private router:Router,
     @Inject(FirebaseRef) fb) {
 

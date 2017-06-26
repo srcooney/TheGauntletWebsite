@@ -367,18 +367,18 @@ if(file != undefined){
 
   getRsvpsKeysFromEventKey(eventKey:string){
     const rsvpKeys = this.af.database.list("rsvpPerEvent/"+eventKey);
-    console.log("getRsvpsKeysFromEventKey");
-    console.log()
+    //console.log("getRsvpsKeysFromEventKey");
+    //console.log()
     const rsvpSorted = this.sortRsvpKeysByDatetime(rsvpKeys);
     return rsvpSorted;
   }
 
   sortRsvpKeysByDatetime(rsvpKeys){
-   return rsvpKeys.do(console.log).map( rsvpkys => 
+   return rsvpKeys.map( rsvpkys => 
      {
        return rsvpkys.sort(function(a,b){
-         console.log("b.$key = "+ b.$key+ "a.$key = " +a.$key);
-         console.log("b.time = "+ b.time+ "a.time = " +a.time);
+         //console.log("b.$key = "+ b.$key+ "a.$key = " +a.$key);
+         //console.log("b.time = "+ b.time+ "a.time = " +a.time);
          // var moment = require('moment');
          // console.log(moment(b.time).isAfter(a.time));
          // console.log(btime<atime);

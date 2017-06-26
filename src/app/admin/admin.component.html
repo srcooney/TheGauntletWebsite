@@ -14,9 +14,10 @@
 	<button class="btn-black" (click)="switchView('admin')" [class.active]="listView === 'admin'">Admins</button>
 		<button class="btn-black" (click)="switchView('eventCreator')" [class.active]="listView === 'eventCreator'">Event Creators</button>
 		<button class="btn-black" (click)="switchView('patreon7Member')" [class.active]="listView === 'patreon7Member'">Patreon Members</button>
+		<!-- <button class="btn-black" (click)="switchView('stats')" [class.active]="listView === 'stats'">Stats</button> -->
 </div>
 
-<div class="listView">
+<div *ngIf="listView != 'stats'" class="listView">
 <span class="list-title">
 <h3>{{trueAttributeTitle}}</h3>
 <table  class="list-table table lessons-list card card-strong">
@@ -42,5 +43,6 @@
 </table>
 </span>
 </div>
+<div *ngIf="listView == 'stats'" class="listView">AveRSVPS:{{aveRsvps}}</div>
 <div *ngIf="isChrome">This is a Chrome Browser</div>
 <div *ngIf="isSafari">This is a Safari Browser</div>
