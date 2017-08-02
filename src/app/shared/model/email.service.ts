@@ -12,7 +12,7 @@ export class EmailService {
   	private af: AngularFire,
   	private http: Http,) { }
 
-sendRSVPUpdateEmailFromKey(userKey:string,eventKey:string) {
+sendRSVPUpdateEmailFromKey(userKey:string,eventKey:string,eventCreatorKey:string) {
 
 this.af.database.object('events/'+eventKey).map(GauntletEvent.fromJson).first()
 
@@ -22,6 +22,7 @@ this.af.database.object('events/'+eventKey).map(GauntletEvent.fromJson).first()
   		console.log("sendRSVPUpdateEmail userKey = "+userKey+" eventKey = "+eventKey);
   		// console.log(event);
 
+      // get user who rsvp'd
   		this.af.database.object('users/'+userKey).map(User.fromJson).first()
   			.subscribe(
 			  	user => {
@@ -32,13 +33,31 @@ this.af.database.object('events/'+eventKey).map(GauntletEvent.fromJson).first()
             var dateTime = moment(event.eventStartTime).local().format("dddd, MMMM Do YYYY, h:mm a").toString();
 			  		this.sendRSVPEmail(user.email,user.displayName,event.title,dateTime)
 			  	});
+      // email event creator also
 
+      this.af.database.object('users/'+eventCreatorKey).map(User.fromJson).first()
+        .subscribe(
+          user => {
+            // console.log("sendRSVPUpdateEmail userKey = "+userKey+" eventKey = "+eventKey);
+            // console.log(user);
+            // console.log(event.title+user.displayName+user.email+event.eventStartTime);
+            var moment = require('moment');
+            var dateTime = moment(event.eventStartTime).local().format("dddd, MMMM Do YYYY, h:mm a").toString();
+            this.sendEventCreatorEmail(user.email,user.displayName,event.title,dateTime)
+          });
   	});
 } 
 
+sendEventCreatorEmail(email,displayName,title,eventStartTime){
+  var emailTo = email;
+  var subject = "Hi " + displayName + ", you have another player for " + title;
+  var body = "The Event: "+ title + " starts at " + eventStartTime;
+  this.sendEmailTo(emailTo,subject,body);
+}
+
 sendRSVPEmail(email,displayName,title,eventStartTime){
   var emailTo = email;
-  var subject = "Congrats " +displayName+"! Your RSVP list has been updated!";
+  var subject = "Congrats " +displayName+"! You're RSVP'd to " + title;
   var body = "You are now attending "+ title + " which starts at " + eventStartTime;
   this.sendEmailTo(emailTo,subject,body);
 }

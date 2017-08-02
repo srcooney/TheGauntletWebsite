@@ -11,6 +11,7 @@ export class GauntletEvent {
         public eventStartTime: Date,
         public allAccessTime: Date,
         public eventCreator: string,
+        public eventCreatorKey: string,
         ) {
 
     }
@@ -19,7 +20,7 @@ export class GauntletEvent {
         return array.map(GauntletEvent.fromJson);
     }
 
-    static fromJson({$key,title,description,imageURL,maxNumUsers,currNumUsers,eventStartTime,allAccessTime,eventCreator}):GauntletEvent {
+    static fromJson({$key,title,description,imageURL,maxNumUsers,currNumUsers,eventStartTime,allAccessTime,eventCreator,eventCreatorKey}):GauntletEvent {
         return new GauntletEvent(
             $key,
             title,
@@ -29,7 +30,8 @@ export class GauntletEvent {
             currNumUsers,
             new Date(eventStartTime),
             new Date(allAccessTime),
-            eventCreator
+            eventCreator,
+            eventCreatorKey
             );
     }
 
