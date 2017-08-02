@@ -8,7 +8,7 @@ export class User {
         public email:string,
         public admin:boolean,
         public eventCreator:boolean,
-        public patreon7Member:boolean,
+        public registered:boolean,
         ) {
 
     }
@@ -17,7 +17,7 @@ export class User {
         return array.map(User.fromJson);
     }
 
-    static fromJson({$key,uid,displayName,email,admin,eventCreator,patreon7Member}):User {
+    static fromJson({$key,uid,displayName,email,admin,eventCreator,registered}):User {
         return new User(
             $key,
             uid,
@@ -25,7 +25,7 @@ export class User {
             email,
             admin,
             eventCreator,
-            patreon7Member);
+            registered);
     }
 
     }

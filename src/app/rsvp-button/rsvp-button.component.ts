@@ -57,7 +57,7 @@ clicked = false;
       if(authInfo.isLoggedIn()) {
         var moment = require('moment-timezone');
         this.allAccessString = moment(this.event.allAccessTime).fromNow();
-        this.disablebutton = !this.allAccessString.includes("ago") && !authInfo.isPatreon7Member() || this.isSafari;
+        this.disablebutton = !this.allAccessString.includes("ago") || !authInfo.isRegistered() || this.isSafari;
 
        this.eventsService.getRsvpsKeysFromEventKey(this.event.$key).subscribe(
           userRsvps =>
@@ -109,7 +109,15 @@ clicked = false;
     // console.log("changeText "+this.event.$key+" this.isWaiting = "+this.isWaiting+" this.isRsvped = " + this.isRsvped +"  this.isRoom = "+this.isRoom);
     if(this.disablebutton){
       if(this.isSafari){this.label_text = "Sorry RSVPing doesn't work with safari please use a different browser!"}
-      else{this.label_text = "Non Patreon users can rsvp " + this.allAccessString;}
+      else{
+        if(!this.authInfo.isRegistered())
+          {
+            this.label_text = "You can't RSVP unless you are Registered!";
+          }
+          else {
+            this.label_text = "Registered attendees can rsvp " + this.allAccessString;
+          }
+      }
       this.button_text = "RSVP"
       return;
     }

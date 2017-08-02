@@ -16,6 +16,7 @@ export class EventFormComponent implements OnInit,OnChanges {
   allAccessTime: string;
   @Input()
     initialValue:any;
+
   constructor(private fb:FormBuilder) {
   	this.form = this.fb.group({
 				title: ['',Validators.required],

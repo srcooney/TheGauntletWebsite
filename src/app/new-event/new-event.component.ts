@@ -23,6 +23,7 @@ export class NewEventComponent implements OnInit {
   save(form) {
     this.uploading = true;
     console.log(this.file);
+      form = this.setDefaultAllAccessTime(form);
       this.eventsService.createNewEvent(form.value,this.file,this.authInfo).do(console.log)
           .subscribe(
               () => {
@@ -32,6 +33,13 @@ export class NewEventComponent implements OnInit {
               err => alert(`error creating lesson ${err}`)
           );
 
+  }
+
+  setDefaultAllAccessTime(form)
+  {
+    var moment = require('moment');
+    form.value.allAccessTime = moment("2017-09-30 24:00").format('MM/DD/YYYY HH:mm').toString();
+    return form;
   }
   file;
   handleFileUpdated(file){

@@ -121,7 +121,7 @@
 //             email: auth.auth.email,
 //             admin: false,
 //             eventCreator: false,
-//             patreon7Member: false,
+//             registered: false,
 //           });
 
 //         const newUserKey = this.sdkDb.child('users').push().key;

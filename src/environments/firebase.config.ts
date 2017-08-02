@@ -1,11 +1,21 @@
-
 export const firebaseConfig = {
-    apiKey: "AIzaSyBRRMaEUaoVUHIxqfL7ZOYoF3Wd6B7KnuY",
-    authDomain: "gauntlet-hangouts.firebaseapp.com",
-    databaseURL: "https://gauntlet-hangouts.firebaseio.com",
-    storageBucket: "gauntlet-hangouts.appspot.com",
-    messagingSenderId: "532861839139"
+    apiKey: "AIzaSyC-XpbbZoexZdUSg6EwMiMZdEKhf56Tz6U",
+    authDomain: "gauntlet-con.firebaseapp.com",
+    databaseURL: "https://gauntlet-con.firebaseio.com",
+    projectId: "gauntlet-con",
+    storageBucket: "gauntlet-con.appspot.com",
+    messagingSenderId: "500145350866"
 };
+
+// config for gauntlet hangouts
+
+// export const firebaseConfig = {
+//     apiKey: "AIzaSyBRRMaEUaoVUHIxqfL7ZOYoF3Wd6B7KnuY",
+//     authDomain: "gauntlet-hangouts.firebaseapp.com",
+//     databaseURL: "https://gauntlet-hangouts.firebaseio.com",
+//     storageBucket: "gauntlet-hangouts.appspot.com",
+//     messagingSenderId: "532861839139"
+// };
 
 // old config
 

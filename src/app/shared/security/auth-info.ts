@@ -23,8 +23,8 @@ export class AuthInfo {
     	else{return false;}
     }
 
-    isPatreon7Member(){
-    	if(this.$user){return this.$user.patreon7Member;}
+    isRegistered(){
+    	if(this.$user){return this.$user.registered;}
     	else{return false;}
     }
 

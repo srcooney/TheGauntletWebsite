@@ -81,9 +81,9 @@ export class AdminComponent implements OnInit {
       this.trueAttributeTitle="Event Creators";
       this.falseAttributeTitle="Non Event Creators"
     }
-    else if(this.listView == "patreon7Member"){
-      this.trueAttributeTitle="Patreon 7$ Members";
-      this.falseAttributeTitle="Non Patreon 7$ Members"
+    else if(this.listView == "registered"){
+      this.trueAttributeTitle="Registered";
+      this.falseAttributeTitle="Not Registered"
     }
 
     this.userService.findAllUsersByAttribute(this.listView,true)

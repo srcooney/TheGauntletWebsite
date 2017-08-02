@@ -123,6 +123,12 @@ p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div
     vertical-align: middle;
 }
 
+.banner-sub-title {
+    text-transform: none;
+    font-size: 10vmin;
+    vertical-align: middle;
+}
+
 .banner-event-title {
     text-transform: none;
     color: white;
@@ -400,7 +406,7 @@ table.courses-list tr td:last-child {
 }
 
 ul.top-menu > li > a.menu-active {
-    color: #ee1c1b;
+    color: #b7b0b1;
     font-weight: bold;
     text-decoration: underline;
 }
