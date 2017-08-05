@@ -30,6 +30,7 @@
 			(click)="routeToEventDetail(event?.$key)" >
 			<td class="event-title">
 				<h3 class="event-td-inner-element"> {{event?.title}}</h3>
+				<h4 class="event-td-inner-element">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</h4>
 			</td>
 		</tr>
 	</tbody>	
@@ -45,6 +46,7 @@
 			(click)="routeToEventDetail(rsvp?.$key)" >
 			<td class="event-title">
 				<h3 class="event-td-inner-element"> {{rsvp?.title}}</h3>
+				<h4 class="event-td-inner-element">{{rsvp.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</h4>
 				<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="rsvp"></rsvp-button>
 			</td>
 		</tr>

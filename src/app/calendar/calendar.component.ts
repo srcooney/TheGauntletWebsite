@@ -72,6 +72,11 @@ export class CalendarComponent implements OnInit {
   	this.eventsService.findAllEvents()
   		.subscribe(events => 
   		{
+        var moment = require('moment');
+        events.forEach(event => 
+          {
+            event.title = event.title + ' ' +  moment(event.eventStartTime).format('h:mm a').toString();
+          })
   			this.gevents = events;
   			this.events = events.map(event => 
   			{
