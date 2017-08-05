@@ -6,6 +6,7 @@ import {DuplicateEventComponent} from "./duplicate-event/duplicate-event.compone
 import {MyAccountComponent} from "./my-account/my-account.component";
 import {AdminComponent} from "./admin/admin.component";
 import {CalendarComponent} from "./calendar/calendar.component";
+import {AllEventsInfoComponent} from "./all-events-info/all-events-info.component";
 import {EventDetailComponent} from "./event-detail/event-detail.component";
 import {AuthGuard} from "./shared/security/auth.guard";
 
@@ -40,6 +41,10 @@ export const routerConfig : Route[] = [
   {
       path: 'calendar',
       component: CalendarComponent
+  },
+  {
+      path: 'all-events-info',
+      component: AllEventsInfoComponent
   },
   {
       path: 'admin',

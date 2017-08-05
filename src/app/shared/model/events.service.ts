@@ -112,7 +112,7 @@ export class EventsService {
   // }
 
   createNewEvent( event:any,file,eventCreator:AuthInfo): Observable<any> {
-    const eventToSave = Object.assign({},event,{currNumUsers:0,eventCreator:eventCreator.displayName});
+    const eventToSave = Object.assign({},event,{currNumUsers:0,eventCreator:eventCreator.displayName,eventCreatorKey: eventCreator.key});
     var moment = require('moment');
 
     //convert from UTC to central time zone
@@ -254,7 +254,7 @@ if(file != undefined){
     return this.firebaseUpdate(dataToSave);
   }
 
-  sendEmailandUpdateEmailStat(rsvp,eventKey){
+  sendEmailandUpdateEmailStat(rsvp,eventKey,eventCreatorKey){
     let dataToSave = {};
     console.log(`rsvpPerEvent/${eventKey}/${rsvp.$key}`)
     dataToSave[`rsvpPerEvent/${eventKey}/${rsvp.$key}`] = {time:rsvp.time,hasEmailed:true};
@@ -263,7 +263,7 @@ if(file != undefined){
 
     // console.log(`rsvpPerEvent/${eventKey}/${userKey}/hasEmailed`)
     //   this.sdkDb.object(`rsvpPerEvent/${eventKey}/${userKey}/hasEmailed`).update(true);
-    this.emailService.sendRSVPUpdateEmailFromKey(rsvp.$key,eventKey);
+    this.emailService.sendRSVPUpdateEmailFromKey(rsvp.$key,eventKey,eventCreatorKey);
   }
 
   cancelRsvp(eventKey: string,userKey:string,currNumUsers:number) {
