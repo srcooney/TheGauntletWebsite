@@ -17,15 +17,33 @@ export class EventFormComponent implements OnInit,OnChanges {
   @Input()
     initialValue:any;
 
+  @Input()
+    isEdit: boolean = false;
+
   constructor(private fb:FormBuilder) {
-  	this.form = this.fb.group({
-				title: ['',Validators.required],
+    if(this.isEdit)
+    {
+      this.form = this.fb.group({
+        title: ['',Validators.required],
         description: ['',Validators.required],
         eventStartTime: ['',[Validators.required,validateDate]],
         allAccessTime: ['',[Validators.required,validateDate]],
         maxNumUsers: ['',Validators.required],
         imageURL: ['']
     });
+    }
+    else 
+    {
+      this.form = this.fb.group({
+        title: ['',Validators.required],
+        description: ['',Validators.required],
+        eventStartTime: ['',[Validators.required,validateDate]],
+        allAccessTime: [''],
+        maxNumUsers: ['',Validators.required],
+        imageURL: ['']
+    });
+    }
+  	
 
    }
 
