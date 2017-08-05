@@ -1,0 +1,78 @@
+	<button class="btn-black" (click)="toggleTable()">{{btn_txt}}</button>
+
+	<table *ngIf="!switchTable" class="list-table table lessons-list card card-strong">
+		<tr>
+	    <th>Title</th>
+	    <th>Event Creator</th>
+	    <th>Start Time</th>
+	    <th>All Access Time</th> 
+	    <th>Percent RSVP</th>
+	    <th>Max Number of Users</th>
+	    <th>rsvps</th>
+	    <th>waitlist</th>
+	  </tr>
+		<tbody>
+			<tr *ngFor="let event of filteredEvents" (click)="routeToEventDetail(event?.$key)">
+				<td>{{event.title}}</td>
+				<td>{{event.eventCreator}}</td>
+				<td>{{event.eventStartTime}}</td>
+				<td>{{event.allAccessTime}}</td>
+				<td>{{event.percentRsvped}}</td>
+				<td>{{event.maxNumUsers}}</td>
+				<td>{{event.rsvps}}</td>
+				<td>{{event.waitlist}}</td>
+			</tr>
+		</tbody>	
+	</table>
+
+	<ngx-datatable  *ngIf="switchTable" class="material"
+	      [rows]="rows"
+        columnMode="force"
+        [headerHeight]="50"
+        [footerHeight]="0"
+        [rowHeight]="50"
+        [scrollbarV]="true"
+        (activate)="onActivate($event)">
+
+				<ngx-datatable-column name="Title" prop="title" [width]="300" >
+          <template let-value="value" ngx-datatable-cell-template>
+          	{{value}}
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Event Creator" prop="eventCreator" [width]="150">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Start Time" prop="eventStartTime" [width]="300">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="All Access Time" prop="allAccessTime" [width]="300">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Percent RSVP'd" prop="percentRsvped" [width]="100">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}%
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Max # Users" prop="maxNumUsers" [width]="50">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="rsvps" prop="rsvps" [width]="50">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="WaitList" prop="waitlist" [width]="50">
+          <template let-value="value" ngx-datatable-cell-template>
+            {{value}}
+          </template>
+        </ngx-datatable-column>
+
+      </ngx-datatable>

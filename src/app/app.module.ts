@@ -32,10 +32,12 @@ import { DuplicateEventComponent } from './duplicate-event/duplicate-event.compo
 import { FooterComponent } from './footer/footer.component';
 import {AuthGuard} from "./shared/security/auth.guard";
 import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 // import { moment-picker } from 'angular-moment-picker';
 // import * as angular from '@angular';
 // var myApp = angular.module('myApp', ['moment-picker']);
 import {CalendarModule as CalendarDateTime} from 'primeng/primeng';
+import { AllEventsInfoComponent } from './all-events-info/all-events-info.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +55,7 @@ import {CalendarModule as CalendarDateTime} from 'primeng/primeng';
     EditEventComponent,
     DuplicateEventComponent,
     FooterComponent,
+    AllEventsInfoComponent,
 
   ],
   imports: [
@@ -64,7 +67,8 @@ import {CalendarModule as CalendarDateTime} from 'primeng/primeng';
     ReactiveFormsModule,
     CalendarEvents.forRoot(),
     NKDatetimeModule,
-    CalendarDateTime
+    CalendarDateTime,
+    NgxDatatableModule
     // 'moment-picker'
   ],
   providers: [EventsService,AuthService,UserService,AuthGuard,EmailService,StatisticsService],

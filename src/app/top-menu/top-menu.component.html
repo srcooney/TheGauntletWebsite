@@ -15,6 +15,10 @@
             <a routerLink="calendar"
                routerLinkActive="menu-active">Calendar</a>
         </li>
+        <li>
+            <a routerLink="all-events-info"
+               routerLinkActive="menu-active">All Events Info</a>
+        </li>
         <li *ngIf="!authInfo?.isLoggedIn()">
             <a routerLinkActive="menu-active" (click)="login()" >Login</a>
         </li>
