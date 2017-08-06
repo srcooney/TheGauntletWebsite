@@ -40,7 +40,7 @@
 
 					<span >
 					<div>
-				  <span *ngIf="authInfo.isEventCreator() && isThisEventCreator" class="btn-black dropdown" (click)="clickedDropDown()">
+				  <span *ngIf="(authInfo.isEventCreator() && isThisEventCreator) || authInfo.isAdmin()" class="btn-black dropdown" (click)="clickedDropDown()">
 				    Event Creator Controls
 				    <span class="caret"></span>
 				  </span>
