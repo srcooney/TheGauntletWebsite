@@ -90,14 +90,15 @@ p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div
 }
 
 .banner {
-    filter:blur(20px);
+    filter:blur(5px);
     position: absolute;
     width: 100%;
     height:70vmin;
     max-height: 500px;
     background-size:100%;
     background-repeat: no-repeat;
-    background-image:url('gauntletlogo.png');
+    background-color: #e50e3a;
+    /*background-image:url('gauntletlogo.png');*/
 }
 .cust-table-row {
     display: table-row;
