@@ -64,10 +64,11 @@ export class EventsService {
     return events.filter(event => 
       {
         var isold = moment(event.eventStartTime).fromNow();
-        console.log(isold);
-        if(isold.includes("6 months ago")) {
-          this.removeEvent(event.$key);
-        }
+        // this deletes events that are more that 6 months old
+        // console.log(isold);
+        // if(isold.includes("6 months ago")) {
+        //   this.removeEvent(event.$key);
+        // }
         return !isold.includes("ago");
       });
   }
