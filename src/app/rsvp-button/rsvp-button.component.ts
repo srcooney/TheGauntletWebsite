@@ -134,18 +134,22 @@ clicked = false;
     console.log("handleUser userKey"+userKey+"eventKey"+eventKey+" this.isWaiting = "+this.isWaiting+" this.isRsvped = " + this.isRsvped +"  this.isRoom = "+this.isRoom);
     // this.sendEmails();
     this.clicked = true;
-    if(this.isRoom && !this.isRsvped)
+    if(this.isRoom && !this.isRsvped){
       this.eventsService.saveRsvp(eventKey,userKey,this.event.currNumUsers);
-    else if(this.isRsvped)
+    }
+    else if(this.isRsvped){
       var confirm_element = confirm("Are you sure you want to un-RSVP to this event?");
       if (confirm_element == true) 
       {
           this.eventsService.cancelRsvp(eventKey,userKey,this.event.currNumUsers);
       } 
-    else if(!this.isRoom && !this.isWaiting)
+    }
+    else if(!this.isRoom && !this.isWaiting){
       this.eventsService.saveRsvp(eventKey,userKey,this.event.currNumUsers);
-    else if(!this.isRoom && this.isWaiting)
+    }
+    else if(!this.isRoom && this.isWaiting){
       this.eventsService.cancelRsvp(eventKey,userKey,this.event.currNumUsers);
+    }
   }
 
   // sentEmail:any =  false;
