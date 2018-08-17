@@ -1,4 +1,23 @@
-	<button class="btn-black" (click)="toggleTable()">{{btn_txt}}</button>
+  <div class="banner-container">
+    <div class="banner-image-holder">
+
+      <div class="banner"></div>
+      <img class="banner-top-image" src="../assets/gauntletlogo.png">
+
+
+    </div>
+    <div class="banner-content">
+      <div class="cust-table-row">
+        <div class="cust-table-cell">   
+      <div>
+  <button class="btn-black" (click)="toggleTable()">{{btn_txt}}</button>
+       
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
 
 	<table *ngIf="!switchTable" class="list-table table lessons-list card card-strong">
 		<tr>
