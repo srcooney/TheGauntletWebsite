@@ -11,13 +11,6 @@
 			<div class="cust-table-row">
 				<div class="cust-table-cell">
 					<div>
-						<span class="banner-title">Gauntlet Con</span>
-						<div class="banner-sub-title">All Events</div>
-					</div>
-					<div>
-						<span >(All times are in your timezone)</span>
-					</div>
-					<div>
 						<input class="search-bar" placeholder="search" (keyup)="search(input.value)" #input>
 					</div>
 					<div *ngIf="authInfo?.isEventCreator()" class="new-event-container">
