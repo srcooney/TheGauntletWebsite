@@ -10,9 +10,6 @@
 			<div class="cust-table-row">
 				<div class="cust-table-cell">
 					<div>
-						<span class="banner-title">My Account</span>
-					</div>
-					<div>
 						<span *ngIf="authInfo.isLoggedIn()">Welcome {{authInfo.displayName}} to your account details!</span>
 						<div>
 							<div>

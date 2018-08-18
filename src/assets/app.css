@@ -102,6 +102,7 @@ p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div
 }
 
 .banner-top-image{
+    border-radius: 10px;
     width: 40vmin;
     height: 40vmin;
     position: absolute;
