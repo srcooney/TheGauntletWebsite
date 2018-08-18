@@ -1,5 +1,11 @@
 	<div class="banner-container">
-		<div class="banner"></div>
+		<div class="banner-image-holder">
+
+			<div class="banner"></div>
+			<img class="banner-top-image" src="../assets/gauntletlogo.png">
+
+
+		</div>
 		<div class="banner-content">
 
 
@@ -26,6 +32,9 @@
 					<div>
 						<span>Google+ | </span>
 						<span>{{dateTime}}</span>
+					</div>
+					<div>
+						<span >(All times are in your timezone)</span>
 					</div>
 					<div >
 						<span>Spots taken: </span>
@@ -105,7 +114,7 @@
 			</span>
 		</div>
 
-		<div >
+<!-- 		<div >
 			<comment-list *ngIf="authInfo.isLoggedIn()" [eventKey]="event?.$key" [displayName]="authInfo.displayName"></comment-list>
 		</div>
-	</div>
+ -->	</div>

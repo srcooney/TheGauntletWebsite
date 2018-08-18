@@ -83,39 +83,49 @@ p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div
 }
 
 .banner-container {
-    height:70vmin;
-    max-height: 500px;
     text-align: center;
     margin-bottom: 40px;
 }
 
 .banner {
-    filter:blur(5px);
-    position: absolute;
+    filter:blur(20px);
     width: 100%;
-    height:70vmin;
-    max-height: 500px;
+    height:50vmin;
+    max-height: 400px;
     background-size:100%;
+    background-position: center;
+    background-color: #232b2b;
     background-repeat: no-repeat;
-    background-color: #e50e3a;
-    /*background-image:url('gauntletlogo.png');*/
+    background-image:url('gauntletlogo.png');
+    position: absolute;
+    
+}
+
+.banner-top-image{
+    border-radius: 10px;
+    width: 40vmin;
+    height: 40vmin;
+    position: absolute;
+    margin: 70px auto auto auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 .cust-table-row {
     display: table-row;
 }
 .cust-table-cell {
     display: table-cell;
-    /*vertical-align: middle;*/
-    padding-top: 12vmin;
+    /*vertical-align: middle;
+    padding-top: 12vmin;*/
 }
 .banner-content {
+    padding-top: 50vmin;
     display: table;
-    color: white;
-    height: 70vmin;
-    max-height: 500px;
+    color: black;
     width: 100%;
     text-align: center;
-    position: absolute;
 }
 
 .banner-title {

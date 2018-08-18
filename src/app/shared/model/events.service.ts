@@ -117,7 +117,8 @@ export class EventsService {
     var moment = require('moment');
 
     //convert from UTC to central time zone
-    eventToSave.allAccessTime = moment(eventToSave.allAccessTime).format().toString();
+    console.log(eventToSave.allAccessTime);
+    eventToSave.allAccessTime = moment.utc(eventToSave.allAccessTime).format().toString();
     eventToSave.eventStartTime = moment(eventToSave.eventStartTime).format().toString();
 
     const newEventKey = this.sdkDb.child('events').push().key;

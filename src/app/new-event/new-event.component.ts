@@ -38,7 +38,7 @@ export class NewEventComponent implements OnInit {
   setDefaultAllAccessTime(form)
   {
     var moment = require('moment');
-    form.value.allAccessTime = moment("2017-09-07 23:59").format('MM/DD/YYYY HH:mm').toString();
+    form.value.allAccessTime = moment.utc("2018-09-03T18:00:00-05:00").format('MM/DD/YYYY HH:mm').toString();
     return form;
   }
   file;
