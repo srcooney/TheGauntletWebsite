@@ -136,8 +136,7 @@ p-calendar > span > div > div.ui-timepicker.ui-widget-header.ui-corner-all > div
 
 .banner-event-title {
     text-transform: none;
-    color: white;
-    font-size: 9vmin;
+    /* font-size: 4vmin; */
     vertical-align: middle;
 }
 .patreon-container {
