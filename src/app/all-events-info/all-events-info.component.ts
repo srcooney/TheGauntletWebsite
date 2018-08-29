@@ -44,8 +44,8 @@ export class AllEventsInfoComponent implements OnInit {
 				for (var i = 0; i < this.filteredEvents.length; i++) { 
           var moment = require('moment');
 
-          this.filteredEvents[i].allAccessTime = moment(this.filteredEvents[i].allAccessTime).format('dddd , MMMM D, YYYY, HH:mm a').toString();
-          this.filteredEvents[i].eventStartTime = moment(this.filteredEvents[i].eventStartTime).format('dddd , MMMM D, YYYY, HH:mm a').toString();
+          this.filteredEvents[i].allAccessTime = moment(this.filteredEvents[i].allAccessTime).local().format('dddd , MMMM D, YYYY, HH:mm a').toString();
+          this.filteredEvents[i].eventStartTime = moment(this.filteredEvents[i].eventStartTime).local().format('dddd , MMMM D, YYYY, HH:mm a').toString();
 					(function(that,i) {
 						that.eventsService.getRsvpsKeysFromEventKey(that.filteredEvents[i].$key).subscribe(
 		          userRsvps =>

@@ -55,8 +55,8 @@ clicked = false;
       {
         this.authInfo = authInfo;
       if(authInfo.isLoggedIn()) {
-        var moment = require('moment-timezone');
-        this.allAccessString = moment(this.event.allAccessTime).fromNow();
+        var moment = require('moment');
+        this.allAccessString = moment(this.event.allAccessTime).local().fromNow();
         this.disablebutton = !this.allAccessString.includes("ago") || !authInfo.isRegistered() || this.isSafari;
 
        this.eventsService.getRsvpsKeysFromEventKey(this.event.$key).subscribe(

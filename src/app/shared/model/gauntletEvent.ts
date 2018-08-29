@@ -22,7 +22,7 @@ export class GauntletEvent {
 
     static fromJson({$key,title,description,imageURL,maxNumUsers,currNumUsers,eventStartTime,allAccessTime,eventCreator,eventCreatorKey}):GauntletEvent {
         var moment = require('moment');
-        var forcedAllAccessTime = moment.utc("2018-09-03T12:00:00-05:00").format('MM/DD/YYYY HH:mm').toString();
+        var forcedAllAccessTime = moment("2018-09-03T22:00:00+00:00").format('MM/DD/YYYY HH:mm').toString();
 
         return new GauntletEvent(
             $key,
