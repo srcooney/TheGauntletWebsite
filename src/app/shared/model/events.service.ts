@@ -50,9 +50,13 @@ export class EventsService {
   }
 
   findAllEvents():Observable<GauntletEvent[]> {
+    var moment = require('moment');
+    var now = moment().add(-1, 'day');
+    console.log("THIS IS THE PRESENT TIME: " +now.format().toString())
     return this.af.database.list('events', {
       query:{
         orderByChild:"eventStartTime",
+        startAt: now.format().toString()
       }
     }).map(GauntletEvent.fromJsonList);
 
