@@ -410,7 +410,7 @@ table.courses-list tr td:last-child {
 }
 
 ul.top-menu > li > a.menu-active {
-    color: #ee1c1b;
+    color: midnightblue;
     font-weight: bold;
     text-decoration: underline;
 }

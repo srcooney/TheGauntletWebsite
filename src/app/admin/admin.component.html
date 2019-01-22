@@ -23,7 +23,7 @@
 <div *ngIf="listView != 'stats'" class="listView">
 <span class="list-title">
 <h3>{{trueAttributeTitle}}</h3>
-<table  class="list-table table lessons-list card card-strong">
+<table  class="table table-striped">
 	<tbody>
 		<tr class="title-row" *ngFor="let user of trueAttributeUsers" (click)="updateAttributeStatus(user?.$key,listView,false)">
 			<td class="event-title"><h3> {{user?.displayName}}</h3></td>
@@ -37,7 +37,7 @@
 </span>
 <span class="list-title">
 <h3>{{falseAttributeTitle}}</h3>
-<table  class="list-table table lessons-list card card-strong">
+<table  class="table table-striped">
 	<tbody>
 		<tr class="title-row" *ngFor="let user of falseAttributeUsers" (click)="updateAttributeStatus(user?.$key,listView,true)">
 			<td class="event-title"><h3> {{user?.displayName}}</h3></td>

@@ -16,7 +16,7 @@ export class MyAccountComponent implements OnInit {
 	userRsvps : any;
   filteredUserRsvps;
   creatorList : any;
-  filteredCreatorList;
+  filteredCreatorList : any;
 
   userWaitlists : any;
 
@@ -52,6 +52,7 @@ export class MyAccountComponent implements OnInit {
               this.creatorList = creatorList;
               // this.creatorList = this.eventsService.getAllFutureEvents(this.creatorList);
               this.filteredCreatorList = this.eventsService.getAllFutureEvents(this.creatorList);
+              console.log(this.filteredCreatorList);
             });
         }
       });

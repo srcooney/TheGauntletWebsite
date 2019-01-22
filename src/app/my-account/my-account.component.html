@@ -26,8 +26,9 @@
 	</div>
 <div><span class="btn-black my-account-btn" (click)="showPastEvents()">{{pastOrFutureEvents}}</span></div>
 <div *ngIf="authInfo.isEventCreator()">
-	<h3>Created Events</h3>
-	<table  class="list-table table lessons-list card card-strong">
+	<h3  class=' card text-white bg-primary mb-3  mt-4'>Created Events</h3>
+	<div *ngIf="filteredCreatorList == null || filteredCreatorList?.length == 0"> Sorry you have no created events!</div>
+	<table  class="table table-striped">
 		<tbody>
 			<tr class="title-row" *ngFor="let event of filteredCreatorList"
 			(click)="routeToEventDetail(event?.$key)" >
@@ -41,9 +42,9 @@
 </div>
 
 <div>
-	<h3>Events Waitlisted and Rsvped for</h3>
+	<h3  class=' card text-white bg-primary mb-3  mt-4'>Events Waitlisted and Rsvped for</h3>
 	<div *ngIf="filteredUserRsvps?.length == 0"> Sorry you have no events scheduled right now!</div>
-	<table  class="list-table table lessons-list card card-strong">
+	<table  class="table table-striped">
 		<tbody>
 			<tr class="title-row" *ngFor="let rsvp of filteredUserRsvps"
 			(click)="routeToEventDetail(rsvp?.$key)" >

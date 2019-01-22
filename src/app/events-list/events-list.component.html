@@ -23,11 +23,23 @@
 	<div>  
 
 	</div> 
-<!-- 	<mat-card>
+	<div class="container">
+		<div class="row">
+				<div *ngFor="let event of filteredEvents" class="col-lg-3 col-md-4 col-sm-6  my-2">
+						<div  class="card border-secondary"  style="height: 242px;" (click)="routeToEventDetail(event?.$key)">
+						<div class="card-header  text-truncate text-center">
+							{{event.title}}
+							</div>
+						<div class="card-body text-center">
+							<p class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</p>
+							<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>		  
+						</div>
+						</div>
+				</div>
+	  </div>
+	</div>
 
-</mat-card> -->
-	<!-- <input #file type="file" (click)="uploadFile(file)"> -->
-	<table class="list-table table lessons-list card card-strong">
+	<!-- <table class="list-table table lessons-list card card-strong">
 		<tbody>
 			<tr *ngFor="let event of filteredEvents" (click)="routeToEventDetail(event?.$key)">
 				<td class="event">
@@ -38,4 +50,4 @@
 				</td>
 			</tr>
 		</tbody>	
-	</table>
+	</table> -->

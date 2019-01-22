@@ -86,10 +86,10 @@
 		</div>
 		<div >
 			<span class="list-title">
-				<h3>Rsvp List</h3>
-				<table  class="list-table table lessons-list card card-strong">
+				<h3 class=' card text-white bg-primary mb-3  mt-4'>RSVP List</h3>
+				<table  class="table table-striped">
 					<tbody>
-						<tr class="title-row" *ngFor="let rsvp of eventRsvps" >
+						<tr class="title-row list-title" *ngFor="let rsvp of eventRsvps" >
 							<td *ngIf="emailButtonText == 'Show Emails'" class="event-title"><h3> {{rsvp?.displayName}}</h3></td>
 							<td *ngIf="emailButtonText == 'Show User Names'" class="event-title"><h3> {{rsvp?.email}}</h3></td>
 						</tr>
@@ -101,8 +101,8 @@
 				<div>&larr;</div>
 			</span> -->
 			<span class="list-title">
-				<h3>Wait List</h3>
-				<table  class="list-table table lessons-list card card-strong">
+				<h3 class=' card text-white bg-primary mb-3  mt-4'>Wait List</h3>
+				<table  class="table table-striped">
 					<tbody>
 						<!--#userRow (click)="addToRsvp(event?.$key,waitlist?.displayName,event?.currNumUsers,userRow)" -->
 						<tr class="title-row" *ngFor="let waitlist of eventWaitlists" >
@@ -112,9 +112,5 @@
 					</tbody>	
 				</table>
 			</span>
-		</div>
-
-		<div >
-			<comment-list *ngIf="authInfo.isLoggedIn()" [eventKey]="event?.$key" [displayName]="authInfo.displayName"></comment-list>
 		</div>
 	</div>
