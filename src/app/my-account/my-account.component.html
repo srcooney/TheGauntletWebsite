@@ -24,6 +24,39 @@
 			</div>
 		</div>
 	</div>
+
+
+
+
+	  <div class="container">
+			<div class="row">
+
+						<div  class="col-lg-3 col-md-4 col-sm-6  my-2 mx-auto">
+								<div class="card text-center mb-3">
+										<div class="card-header text-center">
+										  Update Display Name
+										</div>
+										<div class="card-body">
+											<form  *ngIf="authInfo.isLoggedIn()">
+											<div class="form-row">
+												<div class="col">
+												<div class="form-group mx-auto mb-2">
+													<input type="text" class="form-control" #newDisplayName value="{{authInfo.displayName}}">
+													</div>
+													<button (click)="changeDisplayName(newDisplayName.value)" type="submit" class="btn btn-primary mb-2 mx-auto w-100">Change Display Name</button>
+												</div>
+											</div>
+											</form>
+										</div>
+										<div class="card-footer text-muted">
+										  Refresh page to see change!
+										</div>
+									  </div>
+							</div>
+
+		  </div>
+		</div>  
+
 <div><span class="btn-black my-account-btn" (click)="showPastEvents()">{{pastOrFutureEvents}}</span></div>
 <div *ngIf="authInfo.isEventCreator()">
 	<h3  class=' card text-white bg-primary mb-3  mt-4'>Created Events</h3>
@@ -57,3 +90,4 @@
 	</tbody>	
 </table>
 </div>
+

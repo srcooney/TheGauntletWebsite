@@ -6,6 +6,7 @@ import {Observable,Subject} from "rxjs/Rx";
 import {Router} from "@angular/router";
 import {EmailService} from './email.service';
 import {AuthInfo} from "../security/auth-info";
+import { Location } from "@angular/common";
 // import {MomentModule} from 'angular2-moment/module';
 @Injectable()
 export class EventsService {
@@ -13,6 +14,7 @@ export class EventsService {
 	sdkDb:any;
   sdkStr:any;
   constructor(
+    private location: Location,
     private router:Router,
   	private db:AngularFireDatabase,
   	private af: AngularFire,
@@ -342,7 +344,8 @@ if(file != undefined){
   }
 
   routeToEventDetail(eventKey:string){
-    this.router.navigate(['event-detail',eventKey]);
+    //this.router.navigate(['event-detail',eventKey]);
+    window.open(location.origin+'/event-detail/'+eventKey, "_blank");
   }
 
   routeToEvents(){

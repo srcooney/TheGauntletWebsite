@@ -67,7 +67,7 @@ this.sdkDb = fb.database().ref();
       return subject.asObservable();
   }
 
-  updateAttributeStatus(userKey:string,attribute:string,status:boolean){
+  updateAttributeStatus(userKey:string,attribute:string,status:any){
     let dataToSave = {};
 
     dataToSave["users/" + userKey +"/"+attribute] = status;

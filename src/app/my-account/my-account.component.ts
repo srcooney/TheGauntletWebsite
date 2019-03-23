@@ -118,4 +118,9 @@ export class MyAccountComponent implements OnInit {
       this.filteredCreatorList = this.eventsService.getAllPastEvents(this.creatorList);
     }
   }
+
+  changeDisplayName(newDisplayName: string)
+  {
+    this.userService.updateAttributeStatus(this.authInfo.key,"displayName",newDisplayName);
+  }
 }
