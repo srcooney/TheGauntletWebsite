@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {AuthService} from "../shared/security/auth.service";
 import {User} from "../shared/model/user";
 import {AuthInfo} from "../shared/security/auth-info";
+import {AuthforgooglecalendarService} from "../shared/security/authforgooglecalendar.service";
+
 @Component({
   selector: 'app-event-detail',
   templateUrl: './event-detail.component.html',
@@ -32,7 +34,8 @@ export class EventDetailComponent implements OnInit {
     private router:Router,
   	private eventsService: EventsService,
   	private route: ActivatedRoute,
-    public zone: NgZone,) { }
+    public zone: NgZone,
+    public authForCalendar: AuthforgooglecalendarService) { }
   
   ngOnInit() {
     this.authService.authInfo$.subscribe(authInfo =>  {

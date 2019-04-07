@@ -41,7 +41,9 @@ export class MyAccountComponent implements OnInit {
   ngOnInit() {
     // this.userRsvps = [{title:"None"}];
     // this.userWaitlists = [{title:"None"}];
-
+    $( document ).ready(function() {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
     this.authService.authInfo$.subscribe(authInfo =>
       {
         this.authInfo = authInfo;
@@ -119,8 +121,16 @@ export class MyAccountComponent implements OnInit {
     }
   }
 
-  changeDisplayName(newDisplayName: string)
+  changeDisplayName(newDisplayName: string, displayNameEle)
   {
-    this.userService.updateAttributeStatus(this.authInfo.key,"displayName",newDisplayName);
+    this.userService.updateAttributeStatus(this.authInfo.key,"displayName",newDisplayName)
+    .subscribe(result => {
+      console.log(result);
+      //displayNameEle.setAttribute('data-original-title',  "success" );
+    $(displayNameEle).tooltip('hide').addClass('btn btn-success');
+    $(displayNameEle).tooltip('show');
+    setTimeout(()=>{$(displayNameEle).tooltip('hide')}, 1000);
+    });
+    
   }
 }

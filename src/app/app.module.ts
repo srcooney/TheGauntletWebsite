@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Renderer } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AngularFireModule } from 'angularfire2';
@@ -33,6 +33,8 @@ import { FooterComponent } from './footer/footer.component';
 import {AuthGuard} from "./shared/security/auth.guard";
 import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AuthforgooglecalendarService} from "./shared/security/authforgooglecalendar.service";
+
 // import { moment-picker } from 'angular-moment-picker';
 // import * as angular from '@angular';
 // var myApp = angular.module('myApp', ['moment-picker']);
@@ -71,7 +73,7 @@ import { AllEventsInfoComponent } from './all-events-info/all-events-info.compon
     NgxDatatableModule
     // 'moment-picker'
   ],
-  providers: [EventsService,AuthService,UserService,AuthGuard,EmailService,StatisticsService],
+  providers: [EventsService,AuthService,UserService,AuthGuard,EmailService,StatisticsService,AuthforgooglecalendarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

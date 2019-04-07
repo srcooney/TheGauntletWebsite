@@ -43,7 +43,7 @@
 												<div class="form-group mx-auto mb-2">
 													<input type="text" class="form-control" #newDisplayName value="{{authInfo.displayName}}">
 													</div>
-													<button (click)="changeDisplayName(newDisplayName.value)" type="submit" class="btn btn-primary mb-2 mx-auto w-100">Change Display Name</button>
+													<button #displayNameEle (click)="changeDisplayName(newDisplayName.value,displayNameEle)" type="submit" class="btn btn-primary mb-2 mx-auto w-100" index="0" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Updating...">Change Display Name</button>
 												</div>
 											</div>
 											</form>

@@ -109,8 +109,9 @@ clicked = false;
     // console.log("changeText "+this.event.$key+" this.isWaiting = "+this.isWaiting+" this.isRsvped = " + this.isRsvped +"  this.isRoom = "+this.isRoom);
     if(this.disablebutton){
       if(this.isSafari){this.label_text = "Sorry RSVPing doesn't work with safari please use a different browser!"}
-      else{this.label_text = "Non Patreon users can rsvp " + this.allAccessString;}
+      else{this.label_text = ""}
       this.button_text = "RSVP"
+      this.button_text = "Non-Patreons RSVP " + this.allAccessString;
       return;
     }
 

@@ -45,6 +45,10 @@
 						<span>{{event?.eventCreator}}</span>
 					</div>
 
+					<div class='m-1'>
+							<button #ele *ngIf="authInfo?.isLoggedIn()" (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0" class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Inserting...">Add To Google Calendar</button>
+							<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To Use" disabled>Add To Google Calendar</button>
+					</div>
 					<div>
 
 					<span >
@@ -63,7 +67,7 @@
 				  </ul>
 				  </div>
 					</span>
-</div>
+				</div>
 
 				</div>
 			</div>
