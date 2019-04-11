@@ -39,8 +39,6 @@ export class AuthService {
   }
 
   createNewUser() {
-        // console.log(this.authuser);
-        // if(this.authuser != null ){
         this.auth.first().subscribe( auth =>
         {
           const userToSave = Object.assign(
@@ -87,7 +85,6 @@ export class AuthService {
                      
                     if(auth) {
                       this.userService.findUserbyUid(auth.uid)
-                    .do(result => console.log("user",result))
                     .first()
                     .subscribe(
                       user => 
