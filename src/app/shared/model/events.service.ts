@@ -52,6 +52,18 @@ export class EventsService {
     }).map(GauntletEvent.fromJsonList);
   } 
 
+  findEventsInfiniteScroll(itemsLimit):Observable<GauntletEvent[]> {
+    var moment = require('moment');
+    var now = moment().add(-1, 'day');
+    return this.af.database.list('events', {
+      query:{
+        orderByChild:"eventStartTime",
+        startAt: now.format().toString(),
+        limitToFirst: itemsLimit
+      }
+    }).map(GauntletEvent.fromJsonList);
+  } 
+
   findAllEvents():Observable<GauntletEvent[]> {
     var moment = require('moment');
     var now = moment().add(-1, 'day');

@@ -5,8 +5,9 @@ import {AuthService} from "../shared/security/auth.service";
 import {AuthforgooglecalendarService} from "../shared/security/authforgooglecalendar.service";
 
 import {AuthInfo} from "../shared/security/auth-info";
-import {Observable,Subject} from "rxjs/Rx";
+import {Observable,Subject, BehaviorSubject} from "rxjs/Rx";
 import { delay } from 'q';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 // import { Http, Headers, RequestOptions } from "@angular/http";
 import {Http, Response, RequestOptions, Headers, Request, RequestMethod} from '@angular/http';
@@ -44,21 +45,35 @@ export class EventsListComponent implements OnInit {
   @Output('gEvent')
   gEventEmitter = new EventEmitter<GauntletEvent>();
   
+  numEventsToGet: number;
   ngOnInit() {
+    $( document ).ready(function() {$('[data-toggle="tooltip"]').tooltip();});
+    this.numEventsToGet = 5;
     this.authService.authInfo$.subscribe(authInfo =>  this.authInfo = authInfo);
-  	this.eventsService.findAllEvents()
+  	this.getEvents(this.numEventsToGet);
+  }
+
+  getEvents(numEvents){
+    this.eventsService.findEventsInfiniteScroll(numEvents)
      .subscribe(
         events => 
         {
           this.allEvents = this.filteredEvents = events;
           this.filteredEvents = this.eventsService.getAllFutureEvents(this.allEvents);
           delay(100).then(function(value) {
-            $('[data-toggle="popover"]').popover();
-            $('[data-toggle="tooltip"]').tooltip();
+            //$('[data-toggle="popover"]').popover();
+            //$('[data-toggle="tooltip"]').tooltip();
           });
+          console.log(this.allEvents)
         }
       );
   }
+
+  onScroll () {
+    console.log('scrolled!!')
+    this.numEventsToGet+=5;
+    this.getEvents(this.numEventsToGet);
+}
 
   selectEvent(gEvent: GauntletEvent){
   	this.gEventEmitter.emit(gEvent);

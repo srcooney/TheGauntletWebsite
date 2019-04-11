@@ -47,9 +47,7 @@ export class MyAccountComponent implements OnInit {
   ngOnInit() {
     // this.userRsvps = [{title:"None"}];
     // this.userWaitlists = [{title:"None"}];
-    $( document ).ready(function() {
-    $('[data-toggle="tooltip"]').tooltip();
-  });
+    $( document ).ready(function() {$('[data-toggle="tooltip"]').tooltip();});
   this.allEvents = []
     this.authService.authInfo$.subscribe(authInfo =>
       {

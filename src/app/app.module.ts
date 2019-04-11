@@ -35,6 +35,7 @@ import { NKDatetimeModule } from 'ng2-datetime/ng2-datetime';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AuthforgooglecalendarService} from "./shared/security/authforgooglecalendar.service";
 
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 // import { moment-picker } from 'angular-moment-picker';
 // import * as angular from '@angular';
 // var myApp = angular.module('myApp', ['moment-picker']);
@@ -70,7 +71,8 @@ import { AllEventsInfoComponent } from './all-events-info/all-events-info.compon
     CalendarEvents.forRoot(),
     NKDatetimeModule,
     CalendarDateTime,
-    NgxDatatableModule
+    NgxDatatableModule,
+    InfiniteScrollModule
     // 'moment-picker'
   ],
   providers: [EventsService,AuthService,UserService,AuthGuard,EmailService,StatisticsService,AuthforgooglecalendarService],
