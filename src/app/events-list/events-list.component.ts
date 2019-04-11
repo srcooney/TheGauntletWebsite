@@ -64,13 +64,11 @@ export class EventsListComponent implements OnInit {
             //$('[data-toggle="popover"]').popover();
             //$('[data-toggle="tooltip"]').tooltip();
           });
-          console.log(this.allEvents)
         }
       );
   }
 
   onScroll () {
-    console.log('scrolled!!')
     this.numEventsToGet+=5;
     this.getEvents(this.numEventsToGet);
 }
