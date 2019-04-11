@@ -69,7 +69,15 @@ export class CalendarComponent implements OnInit {
     this.eventsService.routeToEventDetail(clickedEvent[0].$key);
   }
   ngOnInit() {
-  	this.eventsService.findAllEvents()
+    this.changeEventsForMonth();
+  }
+
+  changeEventsForMonth(){
+    var firstDayOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 1);
+    var lastDayOfMonth = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + 1, 0);
+
+
+  	this.eventsService.findEventsBetweenDates(firstDayOfMonth,lastDayOfMonth)
   		.subscribe(events => 
   		{
         var moment = require('moment');
@@ -124,6 +132,7 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = addFn(this.viewDate, 1);
+    this.changeEventsForMonth();
 
   }
 
@@ -136,6 +145,7 @@ export class CalendarComponent implements OnInit {
     }[this.view];
 
     this.viewDate = subFn(this.viewDate, 1);
+    this.changeEventsForMonth();
 
   }
 

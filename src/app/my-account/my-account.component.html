@@ -1,4 +1,4 @@
-	<div class="banner-container">
+	<div class="banner-container m-0">
 		<div class="banner-image-holder">
 
 			<div class="banner"></div>
@@ -25,69 +25,100 @@
 		</div>
 	</div>
 
+		<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary  m-2" data-toggle="modal" data-target="#exampleModal">
+		Change Display Name
+	  </button>
+	  
+	  <!-- Modal -->
+	  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="exampleModalLabel">Update Display Name</h5>
+			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+				<form  *ngIf="authInfo.isLoggedIn()">
+				<div class="form-row">
+					<div class="col">
+					<div class="form-group mx-auto mb-2">
+						<input type="text" class="form-control" #newDisplayName value="{{authInfo.displayName}}">
+						</div>
+					<button #displayNameEle (click)="changeDisplayName(newDisplayName.value,displayNameEle)" type="submit" class="btn btn-primary  m-0" index="0" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Updating...">Change Display Name</button>
 
+					</div>
 
-
-	  <div class="container">
-			<div class="row">
-
-						<div  class="col-lg-3 col-md-4 col-sm-6  my-2 mx-auto">
-								<div class="card text-center mb-3">
-										<div class="card-header text-center">
-										  Update Display Name
-										</div>
-										<div class="card-body">
-											<form  *ngIf="authInfo.isLoggedIn()">
-											<div class="form-row">
-												<div class="col">
-												<div class="form-group mx-auto mb-2">
-													<input type="text" class="form-control" #newDisplayName value="{{authInfo.displayName}}">
-													</div>
-													<button #displayNameEle (click)="changeDisplayName(newDisplayName.value,displayNameEle)" type="submit" class="btn btn-primary mb-2 mx-auto w-100" index="0" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Updating...">Change Display Name</button>
-												</div>
-											</div>
-											</form>
-										</div>
-										<div class="card-footer text-muted">
-										  Refresh page to see change!
-										</div>
-									  </div>
-							</div>
-
+				</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+			  <div class="text-left w-100">Refresh page to see change!</div>
+			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
 		  </div>
-		</div>  
+		</div>
+	  </div>
 
 <div><span class="btn-black my-account-btn" (click)="showPastEvents()">{{pastOrFutureEvents}}</span></div>
 <div *ngIf="authInfo.isEventCreator()">
-	<h3  class=' card text-white bg-primary mb-3  mt-4'>Created Events</h3>
+	<div class="jumbotron jumbotron-fluid m-2">
+			<div class="container">
+			  <h1 class="display-4">Created Events</h1>
+			</div>
+		  </div>
 	<div *ngIf="filteredCreatorList == null || filteredCreatorList?.length == 0"> Sorry you have no created events!</div>
-	<table  class="table table-striped">
-		<tbody>
-			<tr class="title-row" *ngFor="let event of filteredCreatorList"
-			(click)="routeToEventDetail(event?.$key)" >
-			<td class="event-title">
-				<h3 class="event-td-inner-element"> {{event?.title}}</h3>
-				<h4 class="event-td-inner-element">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</h4>
-			</td>
-		</tr>
-	</tbody>	
-</table>
+	<div class="container">
+			<div class="row">
+					<div *ngFor="let event of filteredCreatorList" class="col-lg-3 col-md-4 col-sm-6  my-2">
+						<div  class="card border-secondary" (click)="routeToEventDetail(event?.$key)">
+								<div class="card-header  text-truncate text-center" data-toggle="tooltip" data-placement="top" data-trigger="hover" title='{{event.title}}'>
+								{{event.title}}
+								</div>
+							<div class="card-body text-center">
+								<p class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</p>
+								<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>		  
+								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
+							</div>
+							<div class="card-footer text-muted">
+									<button #ele *ngIf="authInfo?.isLoggedIn()" (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0" class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Inserting...">Add To Google Calendar</button>
+									<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To Use" disabled>Add To Google Calendar</button>
+							  </div>
+							</div>
+					</div>
+		  </div>
+		</div>
 </div>
 
 <div>
-	<h3  class=' card text-white bg-primary mb-3  mt-4'>Events Waitlisted and Rsvped for</h3>
+	<div class="jumbotron jumbotron-fluid m-2">
+			<div class="container">
+			  <h1 class="display-4">Waitlisted and RSVP'd Events</h1>
+			</div>
+		  </div>
 	<div *ngIf="filteredUserRsvps?.length == 0"> Sorry you have no events scheduled right now!</div>
-	<table  class="table table-striped">
-		<tbody>
-			<tr class="title-row" *ngFor="let rsvp of filteredUserRsvps"
-			(click)="routeToEventDetail(rsvp?.$key)" >
-			<td class="event-title">
-				<h3 class="event-td-inner-element"> {{rsvp?.title}}</h3>
-				<h4 class="event-td-inner-element">{{rsvp.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</h4>
-				<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="rsvp"></rsvp-button>
-			</td>
-		</tr>
-	</tbody>	
-</table>
+	<div class="container">
+			<div class="row">
+					<div *ngFor="let event of filteredUserRsvps" class="col-lg-3 col-md-4 col-sm-6  my-2">
+						<div  class="card border-secondary" (click)="routeToEventDetail(event?.$key)">
+								<div class="card-header  text-truncate text-center" data-toggle="tooltip" data-placement="top" data-trigger="hover" title='{{event.title}}'>
+								{{event.title}}
+								</div>
+							<div class="card-body text-center">
+								<p class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</p>
+								<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>		  
+								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
+							</div>
+							<div class="card-footer text-muted">
+									<button #ele *ngIf="authInfo?.isLoggedIn()" (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0" class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Inserting...">Add To Google Calendar</button>
+									<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To Use" disabled>Add To Google Calendar</button>
+							  </div>
+							</div>
+					</div>
+		  </div>
+		</div>
 </div>
+
 

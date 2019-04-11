@@ -42,6 +42,16 @@ export class EventsService {
     return subject.asObservable();
   }
 
+  findEventsBetweenDates(start:Date,end:Date):Observable<GauntletEvent[]> {
+    return this.af.database.list('events', {
+      query:{
+        orderByChild:"eventStartTime",
+        startAt: start.toISOString(),
+        endAt: end.toISOString()
+      }
+    }).map(GauntletEvent.fromJsonList);
+  } 
+
   findAllEvents():Observable<GauntletEvent[]> {
     var moment = require('moment');
     var now = moment().add(-1, 'day');

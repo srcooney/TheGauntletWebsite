@@ -3,6 +3,8 @@ import{UserService} from '../shared/model/user.service';
 import {AuthService} from "../shared/security/auth.service";
 import{EventsService} from '../shared/model/events.service';
 import {AuthInfo} from "../shared/security/auth-info";
+import {AuthforgooglecalendarService} from "../shared/security/authforgooglecalendar.service";
+
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.component.html',
@@ -17,6 +19,7 @@ export class MyAccountComponent implements OnInit {
   filteredUserRsvps;
   creatorList : any;
   filteredCreatorList : any;
+  creatorTitlesOnly : any;
 
   userWaitlists : any;
 
@@ -30,13 +33,16 @@ export class MyAccountComponent implements OnInit {
   waitlistTitles: any;
   waitlistRoutes: any;
 
+  allEvents:any;
+
   authInfo: AuthInfo;
 
   pastOrFutureEvents: string = "Past Events";
   constructor(
     private eventsService: EventsService,
   	private userService:UserService,
-  	private authService:AuthService) { }
+    private authService:AuthService,
+    public authForCalendar: AuthforgooglecalendarService) { }
 
   ngOnInit() {
     // this.userRsvps = [{title:"None"}];
@@ -44,6 +50,7 @@ export class MyAccountComponent implements OnInit {
     $( document ).ready(function() {
     $('[data-toggle="tooltip"]').tooltip();
   });
+  this.allEvents = []
     this.authService.authInfo$.subscribe(authInfo =>
       {
         this.authInfo = authInfo;
@@ -54,6 +61,8 @@ export class MyAccountComponent implements OnInit {
               this.creatorList = creatorList;
               // this.creatorList = this.eventsService.getAllFutureEvents(this.creatorList);
               this.filteredCreatorList = this.eventsService.getAllFutureEvents(this.creatorList);
+              this.creatorTitlesOnly = this.filteredCreatorList.map(e => e.title);
+              this.allEvents.concat(this.filteredCreatorList)
             });
         }
       });
@@ -68,9 +77,13 @@ export class MyAccountComponent implements OnInit {
       {
         this.userRsvps = eventList.filter(function( obj ) { return obj.$key !== 'default';})
         this.filteredUserRsvps = this.eventsService.getAllFutureEvents(this.userRsvps);
+        this.allEvents.concat(this.filteredUserRsvps)
+
       });
   }
-
+  isCreator(title){
+    return this.creatorTitlesOnly.includes(title);
+  }
 
   setEventToList(event){
       this.eventsService.getRsvpsKeysFromEventKey(event.$key).first().subscribe(

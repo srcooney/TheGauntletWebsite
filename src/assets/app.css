@@ -307,7 +307,7 @@ form input[type='radio'] {
 
 form button[type='submit'] {
     float: right;
-    margin-right: 75px;
+    /* margin-right: 75px; */
 }
 
 .debug {
