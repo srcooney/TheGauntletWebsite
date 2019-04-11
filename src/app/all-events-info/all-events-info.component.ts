@@ -88,7 +88,6 @@ toggleTable()
   }
 
   onActivate(event) {
-    console.log('Activate Event', event);
     this.eventsService.routeToEventDetail(event.row.$key);
   }
 

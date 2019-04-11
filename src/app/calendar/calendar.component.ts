@@ -102,7 +102,6 @@ export class CalendarComponent implements OnInit {
   actions: CalendarEventAction[] = [{
     label: '<i class="fa fa-fw fa-pencil"></i>',
     onClick: ({event}: {event: CalendarEvent}): void => {
-      console.log('Edit event', event);
     }
   }, {
     label: '<i class="fa fa-fw fa-times"></i>',

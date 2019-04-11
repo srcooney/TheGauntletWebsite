@@ -37,28 +37,16 @@ export class EventFormComponent implements OnInit,OnChanges {
   file:any;
   @Output() fileUpdated = new EventEmitter();
   uploadFile(input){
-    console.log(input.files[0]);
     this.file = input.files[0];
     this.fileUpdated.emit(this.file);
-    // console.log(this.form);
-    // // this.form.controls['image'].updateValue(input);
-    // // this.form.patchValue(changes['initialValue'].currentValue);
-    // this.form.controls['image'].setValue(input);
-    // // this.form.image.updateValue(input);
-    // console.log(this.form);
-    // this.form.patchValue({image: input.files[0]});
-    // console.log(this.form);
   }
 
   ngOnChanges(changes:SimpleChanges) {
-    console.log(changes)
         if (changes['initialValue']) {
             var imageURL = changes['initialValue'].currentValue.imageURL;
             changes['initialValue'].currentValue.imageURL = "";
-            console.log(changes['initialValue'].currentValue);
             this.form.patchValue(changes['initialValue'].currentValue);
             changes['initialValue'].currentValue.imageURL = imageURL;
-            console.log(changes['initialValue'].currentValue);
             var moment = require('moment');
             this.eventStartTime = moment(changes['initialValue'].currentValue.eventStartTime).format('MM/DD/YYYY HH:mm').toString();
             this.allAccessTime = moment(changes['initialValue'].currentValue.allAccessTime).format('MM/DD/YYYY HH:mm').toString();

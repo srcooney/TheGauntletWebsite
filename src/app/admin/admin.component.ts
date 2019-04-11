@@ -50,8 +50,6 @@ export class AdminComponent implements OnInit {
   switchViewStats(){
     this.listView = "stats";
     this.aveRsvps = this.statisticsService.getEventAveRsvps();
-    console.log("switchViewStats")
-    console.log(this.aveRsvps)
   }
 
   switchViewLists(view){

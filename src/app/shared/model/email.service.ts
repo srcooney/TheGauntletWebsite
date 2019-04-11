@@ -19,9 +19,6 @@ this.af.database.object('events/'+eventKey).map(GauntletEvent.fromJson).first()
   // this.af.database.list('events/eventKey').map(GauntletEvent.fromJsonList).first()
   .subscribe(
   	event => {
-  		console.log("sendRSVPUpdateEmail userKey = "+userKey+" eventKey = "+eventKey);
-  		// console.log(event);
-
       // get user who rsvp'd
   		this.af.database.object('users/'+userKey).map(User.fromJson).first()
   			.subscribe(
@@ -61,17 +58,13 @@ sendRSVPEmail(email,displayName,title,eventStartTime){
 sendEmailTo(emailTo:string,subject:string,body:string){
   var subjectEncoded = encodeURIComponent(subject);
   var bodyEncoded = encodeURIComponent(body);
-  console.log(subjectEncoded)
-  console.log(bodyEncoded)
-  // console.log("sendEmailTo !!!!!!!!!!!!!!!!!" +body);
   var url:string = "https://emailserver-153100.appspot.com/";
   this.http.get(url+"?emailTo="+emailTo+"&subject="+subjectEncoded+"&body="+bodyEncoded)
   .catch((err:any) =>{ 
-      console.log("Something is wrong..");
       return Observable.of(undefined);
-           }).do(console.log).subscribe(
-    res => { console.log(res)},
-    err => { console.log("ERROR"+err)}
+           }).subscribe(
+    res => { },
+    err => { }
     );
 }
 

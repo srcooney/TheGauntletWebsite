@@ -46,8 +46,6 @@ export class DuplicateEventComponent implements OnInit {
 
   file;
   handleFileUpdated(file){
-    console.log("handleFileUpdated")
-    console.log(file);
     this.file = file
   }
 

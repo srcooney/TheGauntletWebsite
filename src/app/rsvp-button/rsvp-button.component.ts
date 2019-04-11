@@ -47,7 +47,6 @@ clicked = false;
         // this.isSafari = /Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor);
         var isSafari = !(navigator.vendor && navigator.vendor.indexOf('Apple') > -1 &&
                navigator.userAgent && !navigator.userAgent.match('CriOS'));
-        console.log(navigator)
 
     // this.isSafari= false;
 
@@ -70,28 +69,16 @@ clicked = false;
              });
            if(this.clicked){
              this.clicked = false;
-           console.log("HEY")
-           console.log(index);
-           console.log(userRsvps);
-           console.log("userRsvps.length " + userRsvps.length);
            for (var i=0;i < userRsvps.length;i++) {
-             console.log("userRsvps[i].hasEmailed "+userRsvps[i].hasEmailed+" this.event.maxNumUsers "+this.event.maxNumUsers+"authInfo.key "+ authInfo.key);
              if(userRsvps[i].hasEmailed == false && i < this.event.maxNumUsers){ 
-               console.log(userRsvps[i].hasEmailed)
-               console.log(userRsvps[i])
                this.eventsService.sendEmailandUpdateEmailStat(userRsvps[i],this.event.$key,this.event.eventCreatorKey);
              };
-             // console.log(userRsvps[i])
            };
            };
 
            this.isRsvped = index != -1 && index < this.event.maxNumUsers;
            this.isRoom = userRsvps.length < this.event.maxNumUsers;
            this.isWaiting = index != -1 && index > this.event.maxNumUsers-1;
-
-
-
-           console.log("this.event.$key "+this.event.$key+" this.isWaiting = "+this.isWaiting+" this.isRsvped = " + this.isRsvped +"  this.isRoom = "+this.isRoom);
            this.changeText();
 
          }
@@ -106,7 +93,6 @@ clicked = false;
   }
 
   changeText (){
-    // console.log("changeText "+this.event.$key+" this.isWaiting = "+this.isWaiting+" this.isRsvped = " + this.isRsvped +"  this.isRoom = "+this.isRoom);
     if(this.disablebutton){
       if(this.isSafari){this.label_text = "Sorry RSVPing doesn't work with safari please use a different browser!"}
       else{this.label_text = ""}
@@ -132,8 +118,6 @@ clicked = false;
 
   handleUser($event,eventKey,userKey){
     $event.stopPropagation();
-    console.log("handleUser userKey"+userKey+"eventKey"+eventKey+" this.isWaiting = "+this.isWaiting+" this.isRsvped = " + this.isRsvped +"  this.isRoom = "+this.isRoom);
-    // this.sendEmails();
     this.clicked = true;
     if(this.isRoom && !this.isRsvped){
       this.eventsService.saveRsvp(eventKey,userKey,this.event.currNumUsers);
@@ -152,31 +136,4 @@ clicked = false;
       this.eventsService.cancelRsvp(eventKey,userKey,this.event.currNumUsers);
     }
   }
-
-  // sentEmail:any =  false;
-  // sendEmails(){
-  //        var send_email_subscription = this.eventsService.getRsvpsKeysFromEventKey(this.event.$key).subscribe(
-  //         userRsvps =>
-  //        {
-  //          userRsvps = userRsvps.filter(function( obj ) { return obj.$key !== 'default';})
-  //          console.log("HEY")
-  //          console.log(userRsvps);
-  //          console.log("userRsvps.length " + userRsvps.length);
-  //          for (var i=0;i < userRsvps.length;i++) {
-  //            this.sentEmail = true;
-  //            console.log("userRsvps[i].hasEmailed "+userRsvps[i].hasEmailed+" this.event.maxNumUsers "+this.event.maxNumUsers);
-  //            if(userRsvps[i].hasEmailed == false && i < this.event.maxNumUsers){ 
-  //              console.log(userRsvps[i].hasEmailed)
-  //              console.log(userRsvps[i])
-  //              this.eventsService.sendEmailandUpdateEmailStat(userRsvps[i],this.event.$key)
-  //            };
-  //            // console.log(userRsvps[i])
-  //          };
-
-  //        }
-  //        );
-
-  //        send_email_subscription.unsubscribe();
-  // }
-
 }

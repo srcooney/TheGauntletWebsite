@@ -57,8 +57,6 @@ export class EventDetailComponent implements OnInit {
         users =>
         {
           users = users.filter(function( obj ) { return obj.$key !== 'default';})
-          console.log(this.eventRsvps);
-          console.log(this.eventWaitlists);
           this.eventRsvps = users.slice(0,this.event.maxNumUsers);
           this.eventWaitlists = users.slice(this.event.maxNumUsers);
           this.currentNumRsvps = this.eventRsvps.length;

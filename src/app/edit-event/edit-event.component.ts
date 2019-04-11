@@ -31,8 +31,6 @@ export class EditEventComponent implements OnInit {
 
   file;
   handleFileUpdated(file){
-    console.log("handleFileUpdated")
-    console.log(file);
     this.file = file
   }
 

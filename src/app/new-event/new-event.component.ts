@@ -22,8 +22,7 @@ export class NewEventComponent implements OnInit {
 
   save(form) {
     this.uploading = true;
-    console.log(this.file);
-      this.eventsService.createNewEvent(form.value,this.file,this.authInfo).do(console.log)
+      this.eventsService.createNewEvent(form.value,this.file,this.authInfo)
           .subscribe(
               () => {
                 alert("Event created succesfully.");
@@ -35,8 +34,6 @@ export class NewEventComponent implements OnInit {
   }
   file;
   handleFileUpdated(file){
-    console.log("handleFileUpdated")
-    console.log(file);
     this.file = file
   }
 

@@ -54,7 +54,6 @@ export class MyAccountComponent implements OnInit {
               this.creatorList = creatorList;
               // this.creatorList = this.eventsService.getAllFutureEvents(this.creatorList);
               this.filteredCreatorList = this.eventsService.getAllFutureEvents(this.creatorList);
-              console.log(this.filteredCreatorList);
             });
         }
       });
@@ -67,21 +66,8 @@ export class MyAccountComponent implements OnInit {
   	this.userService.getRsvpListFromUserKey(userKey)
     .subscribe(eventList => 
       {
-        console.log(eventList);
         this.userRsvps = eventList.filter(function( obj ) { return obj.$key !== 'default';})
         this.filteredUserRsvps = this.eventsService.getAllFutureEvents(this.userRsvps);
-
-        
-        console.log(this.userRsvps);
-        // this.userRsvps = eventList;
-        // for(var i=0;i<eventList.length;i++){
-        //   this.setEventToList(eventList[i]);
-        // }
-        // console.log("USERRSVPS")
-        // console.log(this.userRsvps);
-        // console.log(this.userWaitlists);
-        // this.rsvpTitles = rsvpList.map(rsvpevent => rsvpevent.title);
-        // this.rsvpRoutes = rsvpList.map(rsvpevent => "event-detail/"+rsvpevent.$key);
       });
   }
 
@@ -90,7 +76,6 @@ export class MyAccountComponent implements OnInit {
       this.eventsService.getRsvpsKeysFromEventKey(event.$key).first().subscribe(
           userRsvps =>
          {
-           console.log("event")
            userRsvps = userRsvps.filter(function( obj ) { return obj.$key !== 'default';})
            var index = userRsvps.findIndex(user => {return user.$key === this.authInfo.key;});
 
@@ -125,8 +110,6 @@ export class MyAccountComponent implements OnInit {
   {
     this.userService.updateAttributeStatus(this.authInfo.key,"displayName",newDisplayName)
     .subscribe(result => {
-      console.log(result);
-      //displayNameEle.setAttribute('data-original-title',  "success" );
     $(displayNameEle).tooltip('hide').addClass('btn btn-success');
     $(displayNameEle).tooltip('show');
     setTimeout(()=>{$(displayNameEle).tooltip('hide')}, 1000);

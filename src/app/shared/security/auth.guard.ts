@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route:ActivatedRouteSnapshot,
                 state:RouterStateSnapshot):Observable<boolean> {
-        return this.authService.authInfo$.do(console.log)
+        return this.authService.authInfo$
             .map(authInfo => authInfo.isAdmin())
             .take(1)
             .do(admin => {

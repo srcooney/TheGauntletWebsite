@@ -23,8 +23,6 @@ export class AuthforgooglecalendarService {
   // Initialize the Google API client with desired scopes
   initClient() {
     gapi.load('client', () => {
-      console.log('loaded client')
-
       // It's OK to expose these credentials, they are client safe.
       gapi.client.init({
         apiKey: 'AIzaSyClszV0mqDVQQb7VScS_U_VqtMYoodRRKM',
@@ -33,7 +31,7 @@ export class AuthforgooglecalendarService {
         scope: 'https://www.googleapis.com/auth/calendar'
       })
 
-      gapi.client.load('calendar', 'v3', () => console.log('loaded calendar'));
+      gapi.client.load('calendar', 'v3', () => 'loaded calendar');
 
     });
   }
@@ -44,7 +42,6 @@ export class AuthforgooglecalendarService {
   
     const token = googleUser.getAuthResponse().id_token;
   
-    console.log(googleUser)
   
     //const credential = auth.GoogleAuthProvider.credential(token);
   

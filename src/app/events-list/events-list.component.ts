@@ -58,21 +58,6 @@ export class EventsListComponent implements OnInit {
           });
         }
       );
-
-      //$(document).ready(function(){ $('[data-toggle="popover"]').popover(); });
-    // var img = document.getElementById('image');
-    //  this.eventsService.displayFile(img)
-//      .getDownloadURL()
-//      .then(function(url) {
-//         // console.log(url);
-//         this.imageUrl =  url;
-//         console.log(this.imageUrl);
-//       }).catch(function(error) {
-//         // Handle any errors
-//       });
-// ;
-//      console.log(this.imageUrl);
-     // console.log()
   }
 
   selectEvent(gEvent: GauntletEvent){
@@ -86,31 +71,4 @@ export class EventsListComponent implements OnInit {
   routeToEventDetail(eventKey:string){
     this.eventsService.routeToEventDetail(eventKey);
   }
-
-  // uploadFile(file,image){
-  //   console.log(file);
-  //   console.log(file.files[0]);
-  //   console.log(image);
-  //   this.eventsService.uploadFile(file.files[0],image);
-  // }
-
-  // displayFile(){
-  //   this.eventsService.displayFile();
-  // }
-//   insertEvent(event, ele,title: string, descriptionText: string, start: Date){
-//     var insert  = this.authForCalendar.insertEvent(event,ele,title, descriptionText, start)
-//     console.log(insert)
-//     insert.then((value) => {
-//       if(value.status!= 200){
-//         ele.setAttribute('data-original-title',  "error: " + value.status);
-//         $(ele).popover('hide').addClass('btn btn-danger');
-//         $(ele).popover('show')
-//       }
-//       else{
-//         ele.setAttribute('data-original-title',  "success" );
-//         $(ele).popover('hide').addClass('btn btn-success');
-//         $(ele).popover('show')
-//       }
-// });
-//   }
 }
