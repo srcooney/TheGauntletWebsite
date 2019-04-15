@@ -1,22 +1,8 @@
-	<div class="banner-container">
-		<div class="banner-image-holder">
 
-			<div class="banner"></div>
-			<img class="banner-top-image" src="../assets/gauntletlogo.png">
-
-
-		</div>
-		<div class="banner-content">
-			<div class="cust-table-row">
-				<div class="cust-table-cell">		
-			</div>
-			</div>
-		</div>
-	</div>
-<div class="navButtons">
-	<button class="btn-black" (click)="switchView('admin')" [class.active]="listView === 'admin'">Admins</button>
-		<button class="btn-black" (click)="switchView('eventCreator')" [class.active]="listView === 'eventCreator'">Event Creators</button>
-		<button class="btn-black" (click)="switchView('patreon7Member')" [class.active]="listView === 'patreon7Member'">Patreon Members</button>
+<div class="navButtons m-3">
+	<button class="btn btn-secondary" (click)="switchView('admin')" [class.active]="listView === 'admin'">Admins</button>
+		<button class="btn btn-secondary" (click)="switchView('eventCreator')" [class.active]="listView === 'eventCreator'">Event Creators</button>
+		<button class="btn btn-secondary" (click)="switchView('patreon7Member')" [class.active]="listView === 'patreon7Member'">Patreon Members</button>
 		<!-- <button class="btn-black" (click)="switchView('stats')" [class.active]="listView === 'stats'">Stats</button> -->
 </div>
 

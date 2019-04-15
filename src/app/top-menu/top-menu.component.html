@@ -3,6 +3,10 @@
          src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
  -->
     <ul class="top-menu disable-link-styles">
+        <li>
+            <img class="rounded mx-auto d-block m-1" style="width: 40px; height: 40px;" src="../assets/gauntletlogo.png">
+        </li>
+
         <li *ngIf="authInfo?.isLoggedIn()">
             <a routerLink="my-account"
                routerLinkActive="menu-active">My Account</a>

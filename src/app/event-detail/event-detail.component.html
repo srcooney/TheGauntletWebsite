@@ -1,120 +1,98 @@
-	<div class="banner-container">
-		<div class="banner-image-holder">
+<div class="jumbotron">
+  <h1 class="display-4">{{event?.title}}</h1>
 
-			<div class="banner"></div>
-			<img class="banner-top-image" src="../assets/gauntletlogo.png">
+  <div>
+    <span>Google+ | </span>
+    <span>{{dateTime}}</span>
+  </div>
+  <div>
+    <span>(All Times are in your timezone)</span>
+  </div>
+  <div>
+    <span>Spots taken: </span>
+    <span>{{currentNumRsvps}}/{{event?.maxNumUsers}}</span>
+  </div>
+  <div>
+    <span>Event Creator: </span>
+    <span>{{event?.eventCreator}}</span>
+  </div>
+  <hr class="my-4">
+  <div class='m-1'>
+    <button #ele *ngIf="authInfo?.isLoggedIn()"
+      (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0"
+      class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus"
+      title="Inserting...">Add To Google Calendar</button>
+    <button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip"
+      data-placement="top" title="Log In To Use" disabled>Add To Google Calendar</button>
+  </div>
+  <div>
 
+    <span>
+      <div>
+        <span *ngIf="(authInfo.isEventCreator() && isThisEventCreator) || authInfo.isAdmin()" class="btn btn-secondary dropdown"
+          (click)="clickedDropDown()">
+          Event Creator Controls
+          <span class="caret"></span>
+        </span>
+      </div>
+      <div>
+        <ul *ngIf="dropdownClicked" class="dropdown-menu">
+          <li><a (click)="removeEvent(event?.$key)">Delete Event</a></li>
+          <li><a (click)="editEvent(event?.$key)">Edit Event</a></li>
+          <li><a (click)="duplicateEvent(event?.$key)">Duplicate Event (no pic)</a></li>
+          <li><a (click)="showEmails()">{{emailButtonText}}</a></li>
+        </ul>
+      </div>
+    </span>
+  </div>
 
-		</div>
-		<div class="banner-content">
+</div>
 
-
-
-
-
-
-
-
-
-
-
-<!-- 			<div class="event-creator-btn" *ngIf="authInfo.isEventCreator()">
-				<button class="btn-black" (click)="removeEvent(event?.$key)">Delete Event</button>
-				<button class="btn-black" (click)="editEvent(event?.$key)">Edit Event</button>
-				<button class="btn-black" (click)="duplicateEvent(event?.$key)">Duplicate Event</button>
-				<button class="btn-black" (click)="showEmails()">{{emailButtonText}}</button>
-			</div> -->
-			<div class="cust-table-row">
-				<div class="cust-table-cell">
-					<div >
-						<h3 class="banner-event-title">{{event?.title}}</h3>
-					</div>
-					<div>
-						<span>Google+ | </span>
-						<span>{{dateTime}}</span>
-					</div>
-					<div>
-						<span >(All Times are in your timezone)</span>
-					</div>
-					<div >
-						<span>Spots taken: </span>
-						<span>{{currentNumRsvps}}/{{event?.maxNumUsers}}</span>
-					</div>
-					<div >
-						<span>Event Creator: </span>
-						<span>{{event?.eventCreator}}</span>
-					</div>
-
-					<div class='m-1'>
-							<button #ele *ngIf="authInfo?.isLoggedIn()" (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0" class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Inserting...">Add To Google Calendar</button>
-							<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To Use" disabled>Add To Google Calendar</button>
-					</div>
-					<div>
-
-					<span >
-					<div>
-				  <span *ngIf="(authInfo.isEventCreator() && isThisEventCreator) || authInfo.isAdmin()" class="btn-black dropdown" (click)="clickedDropDown()">
-				    Event Creator Controls
-				    <span class="caret"></span>
-				  </span>
-				  </div>
-				  <div>
-				  <ul *ngIf="dropdownClicked" class="dropdown-menu">
-				    <li><a (click)="removeEvent(event?.$key)">Delete Event</a></li>
-				    <li><a (click)="editEvent(event?.$key)">Edit Event</a></li>
-				    <li><a (click)="duplicateEvent(event?.$key)">Duplicate Event (no pic)</a></li>
-				    <li><a (click)="showEmails()">{{emailButtonText}}</a></li>
-				  </ul>
-				  </div>
-					</span>
-				</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-	<div>
-
-
-
-
-
-		<div >
-			<img class="event-image" *ngIf="event?.imageURL != &quot;&quot;" src={{event?.imageURL}}>
-		</div>
-		<div class="description">
-			<span class="description-text">{{event?.description}}</span>
-		</div>
-		<div class="rsvp-event-detail">
-		<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>
-		</div>
-		<div >
-			<span class="list-title">
-				<h3 class=' card text-white bg-primary mb-3  mt-4'>RSVP List</h3>
-				<table  class="table table-striped">
-					<tbody>
-						<tr class="title-row list-title" *ngFor="let rsvp of eventRsvps" >
-							<td *ngIf="emailButtonText == 'Show Emails'" class="event-title"><h3> {{rsvp?.displayName}}</h3></td>
-							<td *ngIf="emailButtonText == 'Show User Names'" class="event-title"><h3> {{rsvp?.email}}</h3></td>
-						</tr>
-					</tbody>	
-				</table>
-			</span>
-			<!-- <span class="list-arrows">
+<div>
+  <div>
+    <img class="event-image" *ngIf="event?.imageURL != &quot;&quot;" src={{event?.imageURL}}>
+  </div>
+  <div class="description">
+    <span class="description-text">{{event?.description}}</span>
+  </div>
+  <div class="rsvp-event-detail">
+    <rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>
+  </div>
+  <div>
+    <span class="list-title">
+      <h3 class=' card text-white bg-primary mb-3  mt-4'>RSVP List</h3>
+      <table class="table table-striped">
+        <tbody>
+          <tr class="title-row list-title" *ngFor="let rsvp of eventRsvps">
+            <td *ngIf="emailButtonText == 'Show Emails'" class="event-title">
+              <h3> {{rsvp?.displayName}}</h3>
+            </td>
+            <td *ngIf="emailButtonText == 'Show User Names'" class="event-title">
+              <h3> {{rsvp?.email}}</h3>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
+    <!-- <span class="list-arrows">
 				<div>&larr;</div>
 				<div>&larr;</div>
 			</span> -->
-			<span class="list-title">
-				<h3 class=' card text-white bg-primary mb-3  mt-4'>Wait List</h3>
-				<table  class="table table-striped">
-					<tbody>
-						<!--#userRow (click)="addToRsvp(event?.$key,waitlist?.displayName,event?.currNumUsers,userRow)" -->
-						<tr class="title-row" *ngFor="let waitlist of eventWaitlists" >
-							<td *ngIf="emailButtonText == 'Show Emails'" class="event-title"><h3> {{waitlist?.displayName}}</h3></td>
-							<td *ngIf="emailButtonText == 'Show User Names'" class="event-title"><h3> {{waitlist?.email}}</h3></td>
-						</tr>
-					</tbody>	
-				</table>
-			</span>
-		</div>
-	</div>
+    <span class="list-title">
+      <h3 class=' card text-white bg-primary mb-3  mt-4'>Wait List</h3>
+      <table class="table table-striped">
+        <tbody>
+          <!--#userRow (click)="addToRsvp(event?.$key,waitlist?.displayName,event?.currNumUsers,userRow)" -->
+          <tr class="title-row" *ngFor="let waitlist of eventWaitlists">
+            <td *ngIf="emailButtonText == 'Show Emails'" class="event-title">
+              <h3> {{waitlist?.displayName}}</h3>
+            </td>
+            <td *ngIf="emailButtonText == 'Show User Names'" class="event-title">
+              <h3> {{waitlist?.email}}</h3>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </span>
+  </div>
+</div>

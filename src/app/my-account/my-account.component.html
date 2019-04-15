@@ -1,68 +1,65 @@
-	<div class="banner-container m-0">
-		<div class="banner-image-holder">
+	<div>
+			<div *ngIf="authInfo.isLoggedIn()" class="jumbotron jumbotron-fluid m-2">
+					<div class="container">
+						<h1 class="display-4">Welcome {{authInfo.displayName}}!</h1>
 
-			<div class="banner"></div>
-			<img class="banner-top-image" src="../assets/gauntletlogo.png">
-
-
-		</div>
-		<div class="banner-content">
-			<div class="cust-table-row">
-				<div class="cust-table-cell">
-					<div>
-						<span *ngIf="authInfo.isLoggedIn()">Welcome {{authInfo.displayName}} to your account details!</span>
-						<div>
-							<div>
-								<span>You are a: </span>
-							</div>
-							<span class="btn-black my-account-btn" *ngIf="authInfo.isEventCreator()">Event Creator</span>
-							<span class="btn-black my-account-btn" *ngIf="authInfo.isAdmin()">Admin</span>
-							<span class="btn-black my-account-btn" *ngIf="authInfo.isPatreon7Member()">Patreon Member</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+						<h3>
+							<span class="badge badge-secondary" *ngIf="authInfo.isEventCreator()">Event Creator</span>
+							<span class="badge badge-secondary" *ngIf="authInfo.isAdmin()">Admin</span>
+							<span class="badge badge-secondary" *ngIf="authInfo.isPatreon7Member()">Patreon Member</span>
+						</h3>
 		<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary  m-2" data-toggle="modal" data-target="#exampleModal">
-		Change Display Name
-	  </button>
-	  
-	  <!-- Modal -->
-	  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-		  <div class="modal-content">
-			<div class="modal-header">
-			  <h5 class="modal-title" id="exampleModalLabel">Update Display Name</h5>
-			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-			  </button>
-			</div>
-			<div class="modal-body">
-				<form  *ngIf="authInfo.isLoggedIn()">
-				<div class="form-row">
-					<div class="col">
-					<div class="form-group mx-auto mb-2">
-						<input type="text" class="form-control" #newDisplayName value="{{authInfo.displayName}}">
-						</div>
-					<button #displayNameEle (click)="changeDisplayName(newDisplayName.value,displayNameEle)" type="submit" class="btn btn-primary  m-0" index="0" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Updating...">Change Display Name</button>
-
+		
+		<button type="button" class="btn btn-primary  m-2" data-toggle="modal" data-target="#exampleModal">
+				Change Display Name
+				</button>
+				
+				<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Update Display Name</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
 					</div>
-
+					<div class="modal-body">
+						<form  *ngIf="authInfo.isLoggedIn()">
+						<div class="form-row">
+							<div class="col">
+							<div class="form-group mx-auto mb-2">
+								<input type="text" class="form-control" #newDisplayName value="{{authInfo.displayName}}">
+								</div>
+							<button #displayNameEle (click)="changeDisplayName(newDisplayName.value,displayNameEle)" type="submit" class="btn btn-primary  m-0" index="0" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Updating...">Change Display Name</button>
+		
+							</div>
+		
+						</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<div class="text-left w-100">Refresh page to see change!</div>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+					</div>
 				</div>
-				</form>
-			</div>
-			<div class="modal-footer">
-			  <div class="text-left w-100">Refresh page to see change!</div>
-			  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			</div>
-		  </div>
+				</div>
+				
+				<!-- end modal -->
+		
+		<!-- <div></div><span class="btn-black my-account-btn" (click)="showPastEvents()">{{pastOrFutureEvents}}</span></div> -->
+		
+					</div>
+					</div>
+			<div>
+				<div>
+				
+				</div>
+							</div>
 		</div>
-	  </div>
 
-<div><span class="btn-black my-account-btn" (click)="showPastEvents()">{{pastOrFutureEvents}}</span></div>
+
 <div *ngIf="authInfo.isEventCreator()">
 	<div class="jumbotron jumbotron-fluid m-2">
 			<div class="container">

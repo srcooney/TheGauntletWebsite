@@ -1,25 +1,13 @@
-	<div class="banner-container">
-		<div class="banner-image-holder">
-
-			<div class="banner"></div>
-			<img class="banner-top-image" src="../assets/gauntletlogo.png">
 
 
-		</div>
-		
-		<div class="banner-content">
-			<div class="cust-table-row">
-				<div class="cust-table-cell">
-					<div>
-						<input class="search-bar" placeholder="search" (keyup)="search(input.value)" #input>
-					</div>
-					<div *ngIf="authInfo?.isEventCreator()" class="new-event-container">
-						<button class="btn-black" routerLink="new">New Event</button>
-					</div>
-				</div>
+	<div class="">
+			<div>
+				<input class="search-bar" placeholder="search" (keyup)="search(input.value)" #input>
+			</div>
+			<div *ngIf="authInfo?.isEventCreator()" class="new-event-container">
+				<button class="btn btn-secondary" routerLink="new">New Event</button>
 			</div>
 		</div>
-	</div>
 
 	<div class="search-results"
 	infinite-scroll
