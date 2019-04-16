@@ -22,9 +22,9 @@
 								{{event.title}}
 								</div>
 							<div class="card-body text-center">
-								<p class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</p>
+								<small class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</small>
 								<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>		  
-								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
+								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary btn-sm m-2" style="font-size: 12px;"data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
 							
 							</div>
 							<div class="card-footer text-muted">

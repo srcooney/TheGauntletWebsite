@@ -75,9 +75,9 @@
 								{{event.title}}
 								</div>
 							<div class="card-body text-center">
-								<p class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</p>
+								<small class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</small>
 								<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>		  
-								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
+								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary btn-sm m-2" style="font-size: 12px;"data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
 							</div>
 							<div class="card-footer text-muted">
 									<button #ele *ngIf="authInfo?.isLoggedIn()" (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0" class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Inserting...">Add To Google Calendar</button>
@@ -104,9 +104,9 @@
 								{{event.title}}
 								</div>
 							<div class="card-body text-center">
-								<p class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</p>
+								<small class="card-text">{{event.eventStartTime | date: 'EEEE, MMMM d, yyyy h:mm a'}}</small>
 								<rsvp-button *ngIf="authInfo?.isLoggedIn()" class="event-td-inner-element" [event]="event"></rsvp-button>		  
-								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
+								<button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary btn-sm m-2" style="font-size: 12px;"data-toggle="tooltip" data-placement="top" title="Log In To RSVP" disabled>RSVP</button>
 							</div>
 							<div class="card-footer text-muted">
 									<button #ele *ngIf="authInfo?.isLoggedIn()" (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0" class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus" title="Inserting...">Add To Google Calendar</button>

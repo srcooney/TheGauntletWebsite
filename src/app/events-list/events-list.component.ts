@@ -25,7 +25,9 @@ export class EventsListComponent implements OnInit {
   filteredEvents:GauntletEvent[];
   auth: any;
   user: any;
-  numberOfEventToGrab: number = 10;
+
+  initialNumberOfEventToGrab: number = 15;
+  numberOfEventToGrab: number = 20;
   imageUrl;
 
     public recipient: string;
@@ -46,10 +48,10 @@ export class EventsListComponent implements OnInit {
   @Output('gEvent')
   gEventEmitter = new EventEmitter<GauntletEvent>();
   
-  numEventsToGet: number;
+  numEventsToGet: number = 0;
   ngOnInit() {
     $( document ).ready(function() {$('[data-toggle="tooltip"]').tooltip();});
-    this.numEventsToGet = this.numberOfEventToGrab;
+    this.numEventsToGet = this.initialNumberOfEventToGrab;
     this.authService.authInfo$.subscribe(authInfo =>  this.authInfo = authInfo);
   	this.getEvents(this.numEventsToGet);
   }
