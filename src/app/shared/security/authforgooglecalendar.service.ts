@@ -62,15 +62,19 @@ export class AuthforgooglecalendarService {
 
   async insertEvent(event,ele,title: string, descriptionText: string, start: Date) {
     event.stopPropagation();
-    var end = new Date(start);
-    end.setHours(end.getHours()+1)
+    var moment = require('moment');
+    var momentStart = moment(start);
+    var momentEnd = moment(start).add(1, 'hour');;
+    console.log(momentStart.format().toString());
+    console.log(start);
+    //end.setHours(end.getHours()+1)
     const insert = await gapi.client.calendar.events.insert({
       calendarId: 'primary',
       start: {
-        dateTime: start.toISOString()
+        dateTime: momentStart.format().toString()
       }, 
       end: {
-        dateTime: end.toISOString()
+        dateTime: momentEnd.format().toString()
       }, 
       summary: title,
       description: descriptionText

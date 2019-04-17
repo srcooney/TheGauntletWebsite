@@ -8,7 +8,9 @@
 							<span class="badge badge-secondary" *ngIf="authInfo.isAdmin()">Admin</span>
 							<span class="badge badge-secondary" *ngIf="authInfo.isPatreon7Member()">Patreon Member</span>
 						</h3>
+						<div><span class="btn btn-primary  m-2" (click)="showPastEvents()">{{pastOrFutureEvents}}</span></div>
 		<!-- Button trigger modal -->
+
 		
 		<button type="button" class="btn btn-primary  m-2" data-toggle="modal" data-target="#exampleModal">
 				Change Display Name
