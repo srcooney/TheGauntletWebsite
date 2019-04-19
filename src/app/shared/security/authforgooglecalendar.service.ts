@@ -60,11 +60,14 @@ export class AuthforgooglecalendarService {
   }
   hoursFromNow = (n) => new Date(Date.now() + n * 1000 * 60 * 60 ).toISOString();
 
-  async insertEvent(event,ele,title: string, descriptionText: string, start: Date) {
+  async insertEvent(event,ele,title: string, descriptionText: string, start: Date, eventLength: number) {
     event.stopPropagation();
     var moment = require('moment');
     var momentStart = moment(start);
-    var momentEnd = moment(start).add(1, 'hour');;
+    if(eventLength === undefined){
+      eventLength = 3;
+    }
+    var momentEnd = moment(start).add(eventLength, 'hour');;
     console.log(momentStart.format().toString());
     console.log(start);
     //end.setHours(end.getHours()+1)

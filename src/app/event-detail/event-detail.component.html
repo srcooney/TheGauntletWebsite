@@ -9,6 +9,11 @@
     <span>(All Times are in your timezone)</span>
   </div>
   <div>
+      <span *ngIf="event?.eventLength === undefined">Session Length: 0</span>
+      <span *ngIf="event?.eventLength !== undefined">Session Length: {{event?.eventLength}}</span>
+
+    </div>
+  <div>
     <span>Spots taken: </span>
     <span>{{currentNumRsvps}}/{{event?.maxNumUsers}}</span>
   </div>
@@ -19,7 +24,7 @@
   <hr class="my-4">
   <div class='m-1'>
     <button #ele *ngIf="authInfo?.isLoggedIn()"
-      (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime)" index="0"
+      (click)="authForCalendar.insertEvent($event,ele, event.title,event.description, event.eventStartTime, event.eventLength)" index="0"
       class="btn btn-primary" data-placement="top" role="button" data-toggle="tooltip" data-trigger="focus"
       title="Inserting...">Add To Google Calendar</button>
     <button *ngIf="!authInfo?.isLoggedIn()" type="button" class="btn btn-outline-secondary" data-toggle="tooltip"

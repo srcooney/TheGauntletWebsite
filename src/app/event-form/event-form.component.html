@@ -22,6 +22,11 @@
             <div class="field-error-message" *ngIf="isErrorVisible('maxNumUsers','required')">field is mandatory</div>
         </div>
         <div class="form-field">
+                <label class="form-max-user">Event Length:</label>
+                <span class="form-input"><input class="form-inside-input" type="number" name="eventLength" formControlName="eventLength"></span>
+                <div class="field-error-message" *ngIf="isErrorVisible('eventLength','required')">field is mandatory</div>
+            </div>
+        <div class="form-field">
             <label class="form-all-access">All Access Time:</label>
             <span class="form-input"><p-calendar [(ngModel)]="allAccessTime" showTime="showTime" hourFormat="24" class="form-input"
             (change)="allAccessTime=$event.target.value" name="allAccessTime" formControlName="allAccessTime" type="datetime"></p-calendar></span>

@@ -3,6 +3,7 @@
 
 	<table *ngIf="!switchTable" class="list-table table lessons-list card card-strong">
 		<tr>
+      <th>Count</th>
 	    <th>Title</th>
 	    <th>Event Creator</th>
 	    <th>Start Time</th>
@@ -13,8 +14,9 @@
 	    <th>waitlist</th>
 	  </tr>
 		<tbody>
-			<tr *ngFor="let event of filteredEvents" (click)="routeToEventDetail(event?.$key)">
-				<td>{{event.title}}</td>
+			<tr *ngFor="let event of filteredEvents;  let idx = index" (click)="routeToEventDetail(event?.$key)">
+        <td>{{idx}}     </td>
+        <td>{{event.title}}</td>
 				<td>{{event.eventCreator}}</td>
 				<td>{{event.eventStartTime}}</td>
 				<td>{{event.allAccessTime}}</td>

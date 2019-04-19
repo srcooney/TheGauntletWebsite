@@ -23,6 +23,7 @@ export class EventFormComponent implements OnInit,OnChanges {
         eventStartTime: ['',[Validators.required,validateDate]],
         allAccessTime: ['',[Validators.required,validateDate]],
         maxNumUsers: ['',Validators.required],
+        eventLength: ['',Validators.required],
         imageURL: ['']
     });
 
